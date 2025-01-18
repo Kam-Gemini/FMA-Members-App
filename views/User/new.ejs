@@ -1,0 +1,43 @@
+<!-- views/signup/new.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+  </head>
+  <body>
+    <h1>Register Your Account!</h1>
+    <form action="/signup" method="POST">
+        <!-- UserName Input -->
+        <label for="username">User Name:</label>
+        <input type="text" name="username" id="username" required />
+        <!-- Email Input -->
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" required />
+        <!-- Password Input -->
+        <label for="password">Create Password:</label>
+        <input type="password" name="password" id="password" required />
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" required />
+        <!-- User Roles with Radio Buttons -->
+        <div>
+          <label>Roles:</label>
+          <div>
+            <label for="admin">
+              <input type="radio" name="role" id="admin" value="Admin" required />
+              Admin
+            </label>
+          </div>
+          <div>
+            <label for="end-user">
+              <input type="radio" name="role" id="end-user" value="End User" required />
+              End User
+            </label>
+          </div>
+        </div>
+        <button type="submit">Register Account</button>
+      </form>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="/stylesheets/style.css" />
+    <title>Show Profile</title>
+</head>
+<body>
+    <h1><%= member.name %></h1>
+    <p><%= member.belt %></p>
+    <p><%= member.gender %></p>
+    <p><%= member.DOB %></p>
+    <p><%= member.weight %></p>
+    <a href="<%= member.instagram %>">Instagram</a>
+    <a href="<%= member.facebook %>">Facebook</a>
+    <div class="profile-pic">
+        <img src ="<%= member.headshot %>" alt="<%= member.name %>">
+    </div>
+    <form action="/members/<%=member._id%>?_method=DELETE" method="POST">
+        <button type="submit">
+          Delete <%= member.name %>
+        </button>
+    </form>
+    <!-- Link to take us to the new edit page at /division/update/:id -->
+    <button onclick="window.location.href='/members/update/<%=member._id%>'">Update</button>
+</body>
+</html>

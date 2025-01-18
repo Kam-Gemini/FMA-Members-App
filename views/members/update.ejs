@@ -1,0 +1,44 @@
+<!-- views/profile/update.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Profile</title>
+</head>
+
+<body>
+    <h1>Create a New Profile!</h1>
+    <form action="/members/<%=member._id%>?_method=PUT" method="POST">
+        <!-- Name Input -->
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="<%= member.name %>" required />
+        <!-- Email Input -->
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" value="<%= member.email %>" required />
+        <!-- Gender Input -->
+        <label for="gender">Gender:</label>
+        <input type="text" name="gender" id="gender" value="<%= member.gender %>" required />
+        <!-- DOB Input -->
+        <label for="dob">DOB:</label>
+        <input type="text" name="DOB" id="DOB" value="<%= member.DOB %>" required />
+        <!-- Weight Input -->
+        <label for="weight">Weight:</label>
+        <input type="text" name="weight" id="weight" value="<%= member.weight %>" required />
+        <!-- Belt Input -->
+        <label for="belt">Belt:</label>
+        <input type="text" name="belt" id="belt" value="<%= member.belt %>" required />
+        <!-- Instagram Input -->
+        <label for="instagram">Instagram:</label>
+        <input type="text" name="instagram" id="instagram" value="<%= member.instagram %>" />
+        <!-- Facebook Input -->
+        <label for="facebook">Facebook:</label>
+        <input type="text" name="facebook" id="facebook" value="<%= member.facebook %>" />
+
+        <button type="submit">Update Profile</button>
+    </form>
+</body>
+
+</html>

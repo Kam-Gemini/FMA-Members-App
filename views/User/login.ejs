@@ -1,0 +1,23 @@
+<!-- views/signup/login.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"  href="/stylesheets/style.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Login To Your Account</h1>
+    <form action="/login" method="POST">
+        <!-- Email Input -->
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" required />
+        <!-- Password Input -->
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required />
+        <button type="submit">Log In</button>
+      </form>
+  </body>
+</html>

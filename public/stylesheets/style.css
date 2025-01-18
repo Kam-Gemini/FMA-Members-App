@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 250px 10px 250px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+#logo {
+    width: 100px;
+    height: 100px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#belt-icon {
+    width: 40px;
+    height: 30px;
+}
+
+.icons a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* img {
+    object-fit: contain;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 6px solid purple;
+    cursor: pointer;
+} */
