@@ -1,25 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"  href="/stylesheets/style.css" />
-    <title>Members</title>
-</head>
-<body>
-    <h1>All Profiles</h1>
-    <ul>
+<%- include('../home') %>
+    <section class="profiles-container">
         <% allMembers.forEach((member) => { %>
-         <li>
+        <div class="profile-pic">
             <a href="/members/<%= member._id %>">
-            <%= member.name %></a>
-         </li>
+                <img src="<%= member.headshot %>" alt="<%= member.name %>" 
+                    style="border: 6px solid <%= member.belt %>;
+                        <% if (member.belt === 'White') { %>
+                            outline: 2px solid rgba(0, 0, 0, 0.2);
+                        <% } else if (member.belt === 'Blue') { %>
+                            border: 6px solid #2667ff;
+                        <% } else if (member.belt === 'Purple') { %>
+                            border: 6px solid #5a2086;
+                        <% } else if (member.belt === 'Brown') { %>
+                            border: 6px solid #774936;
+                        <% } %>
+                    ">
+            </a>
+            <h2><%= member.name %></h2></a>
+            <h3><%= member.belt %> Belt</h3>
+            <div class="social-icons">
+                <% if (member.instagram && member.instagram !== "") { %>
+                <a href="<%= member.instagram %>" target="_blank"><i class="fi fi-brands-instagram"></i></a>
+                <% } %>
+                <% if (member.facebook && member.facebook !== "") { %>
+                <a href="<%= member.facebook %>" target="_blank"><i class="fi fi-brands-facebook"></i></a>
+                <% } %>
+            </div>
+        </div>
         <% }) %>
-    </ul>
-    <% if (isLoggedIn) { %>
-        <button onclick="window.location.href='/members/new'">Create Profile</button>
-    <% } else { %>
-        <p>Please log in to create a profile.</p>
-    <% } %>
-</body>
-</html>
+    </section>
+<%- include('../footer') %>
+<script>
+/// Get the grey-belt link and the belts-section
+const greyBeltLink = document.getElementById('belt-link');
+const beltsSection = document.getElementById('belts-section');
+
+// Toggle visibility of belts-section when grey-belt link is clicked
+greyBeltLink.addEventListener('click', function(event) {
+    // Prevent the link from navigating anywhere
+    event.preventDefault();
+    
+    // Toggle the visibility of the belts-section
+    if (beltsSection.style.display === 'none' || beltsSection.style.display === '') {
+        beltsSection.style.display = 'flex';
+    } else {
+        beltsSection.style.display = 'none';
+    }
+});
+
+// Prevent the click inside the belts-section from toggling the visibility off
+beltsSection.addEventListener('click', function(event) {
+    // Check if the clicked target is not a link inside the section
+    if (event.target.tagName !== 'A') {
+        event.stopPropagation(); // Stops event from bubbling to the grey-belt link
+    }
+    // Always set display to 'flex' when belts-section is clicked
+    beltsSection.style.display = 'flex';
+});
+
+// Ensure the links inside the belts-section work as expected (no preventDefault)
+const beltLinks = beltsSection.querySelectorAll('a');
+beltLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+        beltsSection.style.display = 'flex';
+        // The default behavior (link navigation) should be allowed, so no preventDefault here
+    });
+});
+</script>

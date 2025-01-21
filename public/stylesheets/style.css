@@ -2,10 +2,95 @@
     box-sizing: border-box;
 }
 
+.wrapper {
+    border-top: 2px solid #6C757D;
+    /* Adds a top border (stroke) */
+    border-bottom: 2px solid #6C757D;
+    /* Adds a bottom border (stroke) */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* Optional shadow for a sleek effect */
+}
+
 nav {
     display: flex;
     justify-content: space-between;
-    margin: 10px 250px 10px 250px;
+    margin: 5px 250px 5px 250px;
+}
+
+.belts {
+    display: none;
+    flex-direction: row-reverse;
+    margin: 20px 250px 0px 250px;
+    gap: 80px;
+}
+
+.profiles-container {
+    display: flex;
+    margin: 70px 250px 0px 250px;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 70px;
+}
+
+.profile-pic {
+    text-align: center;
+}
+
+.profile-pic img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.profile-details img {
+    width: 400px;
+}
+
+.profile-icons {
+    font-size: 32px;
+    /* Make the icons larger */
+    color: #000;
+    /* Set the color (customize as needed) */
+    transition: transform 0.3s, color 0.3s;
+    /* Smooth hover effect */
+}
+
+.profile-icons a {
+    text-decoration: none;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    /* Center the icons horizontally */
+    gap: 10px;
+    /* Add spacing between the icons */
+    margin-top: 10px;
+    /* Add spacing above the icons */
+}
+
+.social-icons i {
+    font-size: 32px;
+    /* Make the icons larger */
+    color: #000;
+    /* Set the color (customize as needed) */
+    transition: transform 0.3s, color 0.3s;
+    /* Smooth hover effect */
+}
+
+.social-icons a {
+    text-decoration: none;
+}
+
+.profile-pic a {
+    text-decoration: none;
+}
+
+.social-icons i:hover {
+    color: #007bff;
+    /* Change color on hover (e.g., blue) */
+    transform: scale(1.2);
+    /* Slightly enlarge icon on hover */
 }
 
 .logo {
@@ -31,9 +116,22 @@ nav {
     gap: 6px;
 }
 
+#belts-section {
+    display: none;
+}
+
 #belt-icon {
     width: 40px;
     height: 30px;
+}
+
+#grey-belt {
+    width: 40px;
+    height: 20px;
+}
+
+#add-user {
+    width: 20px;
 }
 
 .icons a {
@@ -44,11 +142,129 @@ nav {
     gap: 6px;
 }
 
-/* img {
-    object-fit: contain;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    border: 6px solid purple;
-    cursor: pointer;
-} */
+main {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+/* General styles for banner containers */
+.banner-container {
+    width: 100%;
+    /* Full width */
+    height: 600px;
+    /* Set desired height */
+    overflow: hidden;
+    position: relative;
+}
+
+/* Sliding wrapper inside each container */
+.slides-wrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Each individual slide */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    /* Hidden by default */
+    animation: flicker 24s infinite;
+    /* Total animation duration for all 6 images */
+}
+
+/* Images inside slides */
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures images scale properly */
+}
+
+/* Add overlay on top of the images */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    /* Dark overlay with transparency */
+    z-index: 1;
+    /* Make sure the overlay sits above the image */
+}
+
+
+/* Keyframes for the flicker animation */
+@keyframes flicker {
+
+    0%,
+    16.67% {
+        opacity: 1;
+        z-index: 1;
+        /* Image visible */
+    }
+
+    20%,
+    100% {
+        opacity: 0;
+        z-index: 0;
+        /* Image hidden */
+    }
+}
+
+/* Control which slide shows at each time step */
+.slide:nth-child(1) {
+    animation-delay: 0s;
+    /* First image shows first */
+}
+
+.slide:nth-child(2) {
+    animation-delay: 4s;
+    /* Second image after 6 seconds */
+}
+
+.slide:nth-child(3) {
+    animation-delay: 8s;
+    /* Third image after 12 seconds */
+}
+
+.slide:nth-child(4) {
+    animation-delay: 12s;
+    /* Fourth image after 18 seconds */
+}
+
+.slide:nth-child(5) {
+    animation-delay: 16s;
+    /* Fifth image after 24 seconds */
+}
+
+.slide:nth-child(6) {
+    animation-delay: 20s;
+    /* Sixth image after 30 seconds */
+}
+
+.profile-details {
+    margin: 50px;
+    background-color: black;
+}
+
+.profile-details-container {
+    display: flex;
+    margin: 10px, 250px;
+    padding: 10px, 250px;
+    justify-content: center;
+    gap: 50px;
+    background-color: white;
+}
+
+body {
+    color: black;
+}

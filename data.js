@@ -1,5 +1,27 @@
 export default [
     {
+        "name": "Max Campos",
+        "email": "max.campos@checkmat.com",
+        "gender": "Male",
+        "DOB": "21/06/1989",
+        "weight": "70kg",
+        "belt": "Black",
+        "headshot": "/images/max-campos.jpg",
+        "instagram": "https://www.instagram.com/maxcamposbjj/",
+        "facebook": "https://www.facebook.com/maxcamposbjj/",
+    },
+    {
+        "name": "Mark Phung",
+        "email": "mark.phung@fma.com",
+        "gender": "Male",
+        "DOB": "13/06/1979",
+        "weight": "64kg",
+        "belt": "Black",
+        "headshot": "/images/mark-phung.jpg",
+        "instagram": "https://www.instagram.com/farnham_martial_arts/",
+        "facebook": "https://www.facebook.com/search/top?q=mark%20phung%20bjj",
+    },
+    {
         "name": "Kamran Raja",
         "email": "kamran.raja@hotmail.co.uk",
         "gender": "Male",

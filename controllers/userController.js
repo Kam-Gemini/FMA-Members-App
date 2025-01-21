@@ -4,8 +4,15 @@ import User from "../models/user.js";
 
 const router = express.Router()
 
+router.route('/views/user/new').get(async function (req, res, next) {
+  try {
+      res.render('user/new.ejs')
+  } catch (e) {
+      next (e)
+  }
+})
 
-router.route('/views/user/new.ejs').get(async function (req, res, next) {
+router.route('/members/:belt/views/user/new').get(async function (req, res, next) {
     try {
         res.render('user/new.ejs')
     } catch (e) {

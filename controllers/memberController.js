@@ -36,6 +36,7 @@ router.route('/members').post(async function (req, res, next) {
     }
 })
 
+
 router.route('/members').get(async function (req, res, next) {
     try {
         const user = req.session.user
@@ -44,7 +45,6 @@ router.route('/members').get(async function (req, res, next) {
             allMembers: allMembers,
             isLoggedIn: !!user // Pass a flag for whether the user is logged in
         })
-        res.status(200).json(allMembers)
     } catch (e) {
         next(e)
     }
@@ -70,6 +70,19 @@ router.route('/members/:id').get(async function (req, res, next) {
         next(e)
     }
 })
+
+router.route('/members/belt/:belt').get(async function (req, res, next) {
+    try {
+        const memberBelt = req.params.belt
+        const allMembers = await Member.find({belt: memberBelt}).exec()
+        res.render('members/index.ejs', {
+            allMembers: allMembers
+        })
+    } catch (e) {
+        next(e)
+    }
+})
+
 
 router.route('/members/:id').delete(async function (req, res, next) {
     try {

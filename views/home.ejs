@@ -1,27 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"  href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/flaticon/css/all/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Divisions App</title>
 </head>
 <body>
-    <nav>
-        <div class="logo">
-            <img src="/images/FMA_logo.png" alt="FMA" id="logo">
-            <h1>Farnham Martial Arts</h1>
+    <div class="wrapper">
+        <nav>
+            <div class="logo">
+                <img src="/images/FMA_logo.png" alt="FMA" id="logo">
+                <h1>Farnham Martial Arts</h1>
+            </div>
+            <div class="nav">
+                <div class="icons"><a href="/members"><i class="fi fi-sr-home"></i><span>Home</span></a></div>
+                <div class="icons"><a href="/members/new"><img src="/images/add-friend.png" id="add-user"><p>Add Profile</p></a></div>
+                <div class="icons"><a href="/members" id="belt-link"><img src="/images/grey_navbar.png" id="grey-belt"><p>Belt</p></a></div>
+                <div class="icons"><a href="views/user/new"><i class="fi fi-sr-clipboard-list"></i><span>Register</span></a></div>
+                <div class="icons"><a href="/login"><i class="fi fi-sr-user"></i><span>Sign in</span></a></div>
+            </div>
+        </nav>
+    </div>
+    <div class="belts" id="belts-section">
+        <div><a href="/members/belt/Black"><img src="/images/black.png" id="belt-icon"></a></div>
+        <div><a href="/members/belt/Brown"><img src="/images/brown.png" id="belt-icon"></a></div>
+        <div><a href="/members/belt/Purple"><img src="/images/purple.png" id="belt-icon"></a></div>
+        <div><a href="/members/belt/Blue"><img src="/images/blue.png" id="belt-icon"></a></div>
+        <div><a href="/members/belt/White"><img src="/images/white.png" id="belt-icon"></a></div>
+    </div>
+    <main>
+        <div class="banner-container" id="container-1">
+            <div class="slides-wrapper">
+                <div class="slide"><img src="/images/action-shot1.jpg" alt="Action Shot"></div>
+                <div class="slide"><img src="/images/action-shot2.jpg" alt="Black Belts"></div>
+                <div class="slide"><img src="/images/action-shot3.jpg" alt="Blue Team"></div>
+                <div class="slide"><img src="/images/team-photo.jpg" alt="Purple Team"></div>
+                <div class="slide"><img src="/images/brown-team.jpg" alt="Action Shot"></div>
+                <div class="slide"><img src="/images/action-shot6.jpg" alt="Team Photo"></div>
+            </div>
         </div>
-        <div class="nav">
-            <div class="icons"><img src="/images/belt.png" id="belt-icon"><p>Belt</p></div>
-            <div class="icons"><a href="views/user/new.ejs"><i class= "fi fi-sr-clipboard-list"></i><span>Register</span></a></div>
-            <div class="icons"><a href="views/user/login.ejs"><i class= "fi fi-sr-user"></i><span>Sign in</span></a></div>
-            <div class="icons"><a href="/"><i class= "fi fi-sr-home"></i><span>Home</span></a></div>
+        <div class="banner-container" id="container-2">
+            <div class="slides-wrapper">
+                <div class="slide"><img src="/images/black-belts.jpg" alt="Black Belts"></div>
+                <div class="slide"><img src="/images/blue-team-photo.jpg" alt="Blue Team"></div>
+                <div class="slide"><img src="/images/purple-team.jpg" alt="Purple Team"></div>
+                <div class="slide"><img src="/images/action-shot5.jpg" alt="Action Shot"></div>
+                <div class="slide"><img src="/images/action-shot7.jpg" alt="Team Photo"></div>
+                <div class="slide"><img src="/images/no-gi-jc.jpg" alt="Action Shot"></div>
+            </div>
         </div>
-    </nav>
-    <banner>
-        <img src>
-    </banner>
-</body>
-</html>
+    </main>
