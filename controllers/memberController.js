@@ -15,7 +15,7 @@ const router = express.Router()
 const upload = multer({
     storage: multer.memoryStorage(),
     limits: { fileSize: 1 * 1024 * 1024 }, // 1MB limit
-  });
+});
 
 router.route('/').get(async function (req, res, next) {
     try {
@@ -38,7 +38,6 @@ router.post('/members', upload.single("image"), async function (req, res, next) 
         // Check if an image was uploaded
         if (req.file) {
             req.body.headshot = req.file.buffer.toString("base64");
-            console.log(`headshot: ${req.body.headshot}`);
         } else {
             req.body.headshot = ""; // Set headshot to an empty string or a default value if no image is uploaded
         }
@@ -48,7 +47,22 @@ router.post('/members', upload.single("image"), async function (req, res, next) 
         res.redirect('/members')
 
     } catch (e) {
-        next(e)
+        // If any error occurs, particularly validation errors, handle them
+        if (e.name === 'ValidationError') {
+            // Iterate through the validation errors and store them in req.flash
+            for (const field in e.errors) {
+                req.flash('error', e.errors[field].message);
+            }
+            console.log(req.body)
+            // Re-render the form with the current input data and error messages
+            return res.render('members/new', {
+                errorMessages: req.flash('error'),
+                member: req.body
+            });
+        } else {
+            // Pass the error to the next middleware
+            next(e);
+        }
     }
 })
 
@@ -69,7 +83,7 @@ router.route('/members').get(async function (req, res, next) {
 // GET /member/new
 router.route('/members/new').get(async function (req, res) {
     try {
-        res.render('members/new.ejs')
+        res.render('members/new', { errorMessages: [], member: {} });
     } catch (e) {
         next(e)
     }
@@ -110,17 +124,13 @@ router.route('/members/:id').delete(async function (req, res, next) {
             res.redirect("/login")
         }
 
-        // * Compare the user who is current logged in (req.session.user)
-        // * with the user ON the destination (destination.user)
-        console.log(req.session.user._id)
-        console.log(member.user._id)
-        
-        if (!member.user._id.equals(req.session.user._id)) {
-            return res.status(402).send({ message: "This is not your profile to delete!"})
-        }
-
         if (!member) {
             return res.send({ message: "Profile doesn't exist." })
+        }
+
+        if (!member.user._id.equals(req.session.user._id)) {
+            req.flash("error",  "This is not your profile to delete")
+            return res.redirect(`/members/${member._id}`)
         }
 
         await Member.findByIdAndDelete(memberId)
@@ -134,7 +144,6 @@ router.route('/members/:id').delete(async function (req, res, next) {
 router.route('/members/update/:id').get(async function(req, res, next) {
     try {
         const member = await Member.findById(req.params.id).exec()
-        console.log(member.weight)
         res.render('members/update.ejs', {
             member: member
         })
@@ -148,32 +157,47 @@ router.route('/members/:id').put(async function (req, res, next) {
     try {
 
         if (!req.session.user) {
-            return res.status(402).send({ message: "You must be logged in to update a profile." })
+            req.flash("error",  "You must be logged in to update a profile.")
+            return res.redirect(`/members/update/${member._id}`);
         }
 
         const userRole = req.session.user.role
         const userEmail = req.session.user.email
 
+        const member = await Member.findById(req.params.id);
+
         if (userRole !== "Admin") {
             // Fetch the member to check the email
             const member = await Member.findById(req.params.id);
             if (!member) {
-                return res.status(404).send({ message: "Member not found." });
+                req.flash("error", "Member not found.")
+                res.redirect('/members')
             }
 
             if (member.email !== userEmail) {
-                return res.status(402).send({ 
-                    message: "You must be an Admin User or the owner of the profile to update it." 
-                });
-            }
+                req.flash("error",  "You must be an Admin User or the owner of the profile to update it.")
+                return res.redirect(`/members/update/${member._id}`);
+            };
         }
-
-        const memberId = req.params.id
-        const updatedMember = await Member.findByIdAndUpdate(memberId, req.body, { new: true })
         
+        const memberId = req.params.id;
+        const updatedMember = await Member.findByIdAndUpdate(memberId, req.body, {
+            new: true,
+            runValidators: true, // Ensure Mongoose validations run on update
+        });
+
         res.redirect('/members')
     } catch (e) {
-        next(e)
+        // If any other error occurs, send the error to the next middleware
+        if (e.name === 'ValidationError') {
+            // Handle Mongoose validation errors
+            for (const field in e.errors) {
+                req.flash('error', e.errors[field].message);
+            }
+            return res.redirect(`/members/update/${req.params.id}`);
+        } else {
+            next(e);
+        }
     }
 })
 

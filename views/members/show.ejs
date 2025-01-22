@@ -38,6 +38,13 @@
                     <% } %>
                 </div>
                 <!-- Update and Delete Buttons -->
+                <% if (errorMessages && errorMessages.length > 0) { %>
+                    <div class="alert alert-danger">
+                        <% errorMessages.forEach(function (msg) { %>
+                            <p><%= msg %></p>
+                        <% }) %>
+                    </div>
+                <% } %>
                 <div class="profile-actions">
                     <button class="btn btn-danger" onclick="window.location.href='/members/update/<%=member._id%>'">Update</button>
                     <form action="/members/<%=member._id%>?_method=DELETE" method="POST" style="display: inline;">

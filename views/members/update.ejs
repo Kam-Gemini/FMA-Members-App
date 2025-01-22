@@ -16,6 +16,13 @@
         <div class="logo">
             <img src="/images/FMA_logo.png" alt="FMA" id="update-profile-logo" />
         </div>
+        <% if (errorMessages && errorMessages.length > 0) { %>
+            <div class="alert alert-danger">
+                <% errorMessages.forEach(function (msg) { %>
+                    <p><%= msg %></p>
+                <% }) %>
+            </div>
+        <% } %>
         <form action="/members/<%=member._id%>?_method=PUT" method="POST">
             <!-- Name Input -->
             <div class="mb-3 d-flex align-items-center">

@@ -9,13 +9,13 @@
                       src="<%= member.gender === 'Male' ? '/images/male_headshot.jpeg' : '/images/female_headshot.jpeg' %>" 
                       alt="<%= member.name %>" 
                       style="border: 6px solid <%= member.belt %>;
-                        <% if (member.belt === 'White') { %>
+                        <% if (member.belt.toLowerCase() === 'white') { %>
                           outline: 2px solid rgba(0, 0, 0, 0.2);
-                        <% } else if (member.belt === 'Blue') { %>
+                        <% } else if (member.belt.toLowerCase() === 'blue') { %>
                           border: 6px solid #2667ff;
-                        <% } else if (member.belt === 'Purple') { %>
+                        <% } else if (member.belt.toLowerCase() === 'purple') { %>
                           border: 6px solid #5a2086;
-                        <% } else if (member.belt === 'Brown') { %>
+                        <% } else if (member.belt.toLowerCase() === 'brown') { %>
                           border: 6px solid #774936;
                         <% } %>
                       ">
@@ -25,13 +25,13 @@
                       src="<%= member.headshot %>" 
                       alt="<%= member.name %>" 
                       style="border: 6px solid <%= member.belt %>;
-                        <% if (member.belt === 'White') { %>
+                        <% if (member.belt.toLowerCase() === 'white') { %>
                           outline: 2px solid rgba(0, 0, 0, 0.2);
-                        <% } else if (member.belt === 'Blue') { %>
+                        <% } else if (member.belt.toLowerCase() === 'blue') { %>
                           border: 6px solid #2667ff;
-                        <% } else if (member.belt === 'Purple') { %>
+                        <% } else if (member.belt.toLowerCase() === 'purple') { %>
                           border: 6px solid #5a2086;
-                        <% } else if (member.belt === 'Brown') { %>
+                        <% } else if (member.belt.toLowerCase() === 'brown') { %>
                           border: 6px solid #774936;
                         <% } %>
                       ">
@@ -41,13 +41,13 @@
                       src="data:image/jpeg;base64,<%= member.headshot %>" 
                       alt="<%= member.name %>" 
                       style="border: 6px solid <%= member.belt %>;
-                        <% if (member.belt === 'White') { %>
+                        <% if (member.belt.toLowerCase() === 'white') { %>
                           outline: 2px solid rgba(0, 0, 0, 0.2);
-                        <% } else if (member.belt === 'Blue') { %>
+                        <% } else if (member.belt.toLowerCase() === 'blue') { %>
                           border: 6px solid #2667ff;
-                        <% } else if (member.belt === 'Purple') { %>
+                        <% } else if (member.belt.toLowerCase() === 'purple') { %>
                           border: 6px solid #5a2086;
-                        <% } else if (member.belt === 'Brown') { %>
+                        <% } else if (member.belt.toLowerCase() === 'brown') { %>
                           border: 6px solid #774936;
                         <% } %>
                       ">
@@ -68,39 +68,34 @@
     </section>
 <%- include('../footer') %>
 <script>
-/// Get the grey-belt link and the belts-section
+// Get the grey-belt link and the belts-section
 const greyBeltLink = document.getElementById('belt-link');
 const beltsSection = document.getElementById('belts-section');
 
+// Variable to track whether the belts section is visible
+let isBeltsSectionVisible = false;
+
 // Toggle visibility of belts-section when grey-belt link is clicked
-greyBeltLink.addEventListener('click', function(event) {
+greyBeltLink.addEventListener('click', function (event) {
     // Prevent the link from navigating anywhere
     event.preventDefault();
-    
+
     // Toggle the visibility of the belts-section
-    if (beltsSection.style.display === 'none' || beltsSection.style.display === '') {
-        beltsSection.style.display = 'flex';
-    } else {
-        beltsSection.style.display = 'none';
-    }
+    isBeltsSectionVisible = !isBeltsSectionVisible;
+    beltsSection.style.display = isBeltsSectionVisible ? 'flex' : 'none';
 });
 
-// Prevent the click inside the belts-section from toggling the visibility off
-beltsSection.addEventListener('click', function(event) {
-    // Check if the clicked target is not a link inside the section
-    if (event.target.tagName !== 'A') {
-        event.stopPropagation(); // Stops event from bubbling to the grey-belt link
-    }
-    // Always set display to 'flex' when belts-section is clicked
-    beltsSection.style.display = 'flex';
+// Prevent clicking inside belts-section from toggling its visibility
+beltsSection.addEventListener('click', function (event) {
+    event.stopPropagation(); // Prevent clicks inside belts-section from bubbling up
 });
 
-// Ensure the links inside the belts-section work as expected (no preventDefault)
+// Ensure clicking belt links works normally (no preventDefault)
 const beltLinks = beltsSection.querySelectorAll('a');
 beltLinks.forEach(link => {
-    link.addEventListener('click', function(event) {
-        beltsSection.style.display = 'flex';
-        // The default behavior (link navigation) should be allowed, so no preventDefault here
+    link.addEventListener('click', function (event) {
+        // Allow the default link navigation behavior
+        event.stopPropagation(); // Stop the click from affecting the toggle logic
     });
 });
 </script>

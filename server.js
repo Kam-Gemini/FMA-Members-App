@@ -18,8 +18,6 @@ import flash from 'connect-flash'
 
 import MongoStore from 'connect-mongo'
 
-import dotenv from 'dotenv'
-
 import path from "path"; // ! You need this line for stylesheets/JS
 
 import { fileURLToPath } from "url" // ! You need this line for stylesheets/JS
@@ -34,6 +32,9 @@ import dotenv from 'dotenv'
 dotenv.config() // initalises .env
 
 const app = express()
+
+// Set EJS as the template engine
+app.set("view engine", "ejs");
 
 // Serve static files
 app.use(express.static(path.join(__dirname, "public"))); // ! You need this line for stylesheets/JS
@@ -56,6 +57,15 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24, // 1 day
     },
 }));
+
+app.use(flash())
+
+// Make flash messages available to all views
+app.use((req, res, next) => {
+    res.locals.successMessages = req.flash('success');
+    res.locals.errorMessages = req.flash('error');
+    next();
+});
 
 app.use(express.json())
 

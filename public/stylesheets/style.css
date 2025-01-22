@@ -277,7 +277,7 @@ main {
     display: flex;
     justify-content: center;
     padding: 50px;
-    background-color: #00171f;
+    background-color: black;
 }
 
 .profile-details-container {

@@ -2,33 +2,48 @@
 // * This is so all profiles are consistent (have the same fields).
 
 import mongoose from "mongoose";
+import validator from "validator"
 
 // create a schema (consistent format) for my destination collection
 const memberSchema = new mongoose.Schema({
     name: {
         type: String, 
-        required: true
+        required: [true, 'Please provide your profile name.']
     },
     email: {
-        type: String, 
-        required: true
+            type: String,
+            required: [true, 'Email is required'], // Ensures email is mandatory
+            unique: true, // Ensures email is unique in the database
+            lowercase: true, // Converts email to lowercase before saving
+            trim: true, // Removes whitespace
+            validate: {
+                validator: (email) => validator.isEmail(email),
+                message: "Please enter a valid email."
+            }
     },
     gender: {
         type: String, 
-        required: true,
-        enum: ['Male', 'Female']
+        required: [true, 'Please enter your gender.'],
+        enum: {
+            values: ['Male', 'Female'],
+            message: 'Please enter "Male" or "Female".'
+        },
     },
     DOB: { 
         type: String,
+        required: [true, 'Please enter your Date of Birth.'],
     },
     weight: { 
         type: String, 
-        required: true
+        required: [true, 'Please enter your weight in kg.'],
     },
     belt: { 
         type: String, 
-        required: true,
-        enum: ['Black', 'Brown', 'Purple', 'Blue', 'White']
+        required: [true, 'Please enter your belt rank.'],
+        enum: {
+            values: ['Black', 'Brown', 'Purple', 'Blue', 'White', 'black', 'brown', 'purple', 'blue', 'white'],
+            message: 'Your belt rank must be one of "Black", "Brown", "Purple", "Blue", "White"'
+        }
     },
     headshot: {
         type: String,
