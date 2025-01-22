@@ -3,20 +3,55 @@
         <% allMembers.forEach((member) => { %>
         <div class="profile-pic">
             <a href="/members/<%= member._id %>">
-                <img 
-                    src="<%= member.headshot ? member.headshot : (member.gender === 'Male' ? '/images/male_headshot.jpeg' : '/images/female_headshot.jpeg') %>" 
-                    alt="<%= member.name %>" 
-                    style="border: 6px solid <%= member.belt %>;
+                <% if (!member.headshot) { %>
+                    <!-- Placeholder image logic -->
+                    <img 
+                      src="<%= member.gender === 'Male' ? '/images/male_headshot.jpeg' : '/images/female_headshot.jpeg' %>" 
+                      alt="<%= member.name %>" 
+                      style="border: 6px solid <%= member.belt %>;
                         <% if (member.belt === 'White') { %>
-                            outline: 2px solid rgba(0, 0, 0, 0.2);
+                          outline: 2px solid rgba(0, 0, 0, 0.2);
                         <% } else if (member.belt === 'Blue') { %>
-                            border: 6px solid #2667ff;
+                          border: 6px solid #2667ff;
                         <% } else if (member.belt === 'Purple') { %>
-                            border: 6px solid #5a2086;
+                          border: 6px solid #5a2086;
                         <% } else if (member.belt === 'Brown') { %>
-                            border: 6px solid #774936;
+                          border: 6px solid #774936;
                         <% } %>
-                    ">
+                      ">
+                  <% } else if (member.headshot.startsWith('/images')) { %>
+                    <!-- "/images" prefix logic -->
+                    <img 
+                      src="<%= member.headshot %>" 
+                      alt="<%= member.name %>" 
+                      style="border: 6px solid <%= member.belt %>;
+                        <% if (member.belt === 'White') { %>
+                          outline: 2px solid rgba(0, 0, 0, 0.2);
+                        <% } else if (member.belt === 'Blue') { %>
+                          border: 6px solid #2667ff;
+                        <% } else if (member.belt === 'Purple') { %>
+                          border: 6px solid #5a2086;
+                        <% } else if (member.belt === 'Brown') { %>
+                          border: 6px solid #774936;
+                        <% } %>
+                      ">
+                  <% } else { %>
+                    <!-- Base64 image logic -->
+                    <img 
+                      src="data:image/jpeg;base64,<%= member.headshot %>" 
+                      alt="<%= member.name %>" 
+                      style="border: 6px solid <%= member.belt %>;
+                        <% if (member.belt === 'White') { %>
+                          outline: 2px solid rgba(0, 0, 0, 0.2);
+                        <% } else if (member.belt === 'Blue') { %>
+                          border: 6px solid #2667ff;
+                        <% } else if (member.belt === 'Purple') { %>
+                          border: 6px solid #5a2086;
+                        <% } else if (member.belt === 'Brown') { %>
+                          border: 6px solid #774936;
+                        <% } %>
+                      ">
+                  <% } %>                  
             </a>
             <h3><%= member.name %></h3></a>
             <h4><%= member.belt %> Belt</h4>

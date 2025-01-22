@@ -12,6 +12,14 @@ router.route('/views/user/new').get(async function (req, res, next) {
   }
 })
 
+router.route('/members/views/user/new').get(async function (req, res, next) {
+  try {
+      res.render('user/new.ejs')
+  } catch (e) {
+      next (e)
+  }
+})
+
 router.route('/members/:belt/views/user/new').get(async function (req, res, next) {
     try {
         res.render('user/new.ejs')

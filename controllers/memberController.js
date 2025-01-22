@@ -7,7 +7,15 @@ import express from "express";
 
 import Member from "../models/members.js";
 
+import multer from "multer"
+
 const router = express.Router()
+
+// Configure Multer for in-memory storage with a 1MB limit
+const upload = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 1 * 1024 * 1024 }, // 1MB limit
+  });
 
 router.route('/').get(async function (req, res, next) {
     try {
@@ -17,7 +25,7 @@ router.route('/').get(async function (req, res, next) {
     }
 })
 
-router.route('/members').post(async function (req, res, next) {
+router.post('/members', upload.single("image"), async function (req, res, next) {
     try {
 
         if (!req.session.user) {
@@ -26,9 +34,17 @@ router.route('/members').post(async function (req, res, next) {
 
         // ! Add the user to the req.body, from the cookie
         req.body.user = req.session.user
+
+        // Check if an image was uploaded
+        if (req.file) {
+            req.body.headshot = req.file.buffer.toString("base64");
+            console.log(`headshot: ${req.body.headshot}`);
+        } else {
+            req.body.headshot = ""; // Set headshot to an empty string or a default value if no image is uploaded
+        }
         // Get the new member from the body of request
         const newMember = await Member.create(req.body)
-        // res.status(400).send(newMember)
+
         res.redirect('/members')
 
     } catch (e) {
@@ -130,16 +146,31 @@ router.route('/members/update/:id').get(async function(req, res, next) {
 
 router.route('/members/:id').put(async function (req, res, next) {
     try {
-        const userRole = req.session.user.role
-        console.log(userRole)
+
         if (!req.session.user) {
             return res.status(402).send({ message: "You must be logged in to update a profile." })
         }
+
+        const userRole = req.session.user.role
+        const userEmail = req.session.user.email
+
         if (userRole !== "Admin") {
-            return res.status(402).send({ message: "You must be an Admin User to update a profile." })    
+            // Fetch the member to check the email
+            const member = await Member.findById(req.params.id);
+            if (!member) {
+                return res.status(404).send({ message: "Member not found." });
+            }
+
+            if (member.email !== userEmail) {
+                return res.status(402).send({ 
+                    message: "You must be an Admin User or the owner of the profile to update it." 
+                });
+            }
         }
+
         const memberId = req.params.id
         const updatedMember = await Member.findByIdAndUpdate(memberId, req.body, { new: true })
+        
         res.redirect('/members')
     } catch (e) {
         next(e)

@@ -14,7 +14,11 @@ import methodOverride from 'method-override'
 
 import session from 'express-session'
 
+import flash from 'connect-flash'
+
 import MongoStore from 'connect-mongo'
+
+import dotenv from 'dotenv'
 
 import path from "path"; // ! You need this line for stylesheets/JS
 

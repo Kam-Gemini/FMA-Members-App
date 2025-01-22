@@ -3,8 +3,25 @@
     <div class="profile-details">
         <div class="profile-details-container">
             <div>
-                <img src="<%= member.headshot ? member.headshot : (member.gender === 'Male' ? '/images/male_headshot.jpeg' : '/images/female_headshot.jpeg') %>" 
-                    alt="<%= member.name %>">
+                <% if (!member.headshot) { %>
+                    <!-- Placeholder image logic -->
+                    <img 
+                      src="<%= member.gender === 'Male' ? '/images/male_headshot.jpeg' : '/images/female_headshot.jpeg' %>" 
+                      alt="<%= member.name %>" 
+                    >
+                  <% } else if (member.headshot.startsWith('/images')) { %>
+                    <!-- "/images" prefix logic -->
+                    <img 
+                      src="<%= member.headshot %>" 
+                      alt="<%= member.name %>" 
+                    >
+                  <% } else { %>
+                    <!-- Base64 image logic -->
+                    <img 
+                      src="data:image/jpeg;base64,<%= member.headshot %>" 
+                      alt="<%= member.name %>" 
+                    >
+                  <% } %>                  
             </div>
             <div>
                 <h2><%= member.name %></h2>
