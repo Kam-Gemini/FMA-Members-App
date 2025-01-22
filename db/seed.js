@@ -31,14 +31,14 @@ async function seed() {
     role: "Admin"
   })
 
-  // ? Add the user to our division
+  // ? Add the user to our member
   members.forEach((member) => {
-    // add the user to this division
+    // add the user to this member
     member.user = user
   })
 
   // This seeds new data
-  console.log('Seed the new division 🌱')
+  console.log('Seed the new member 🌱')
   const newMember = await Member.create(members)
   console.log(newMember)
   

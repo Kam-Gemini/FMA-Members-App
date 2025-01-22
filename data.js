@@ -34,7 +34,7 @@ export default [
     },
     {
         "name": "Matt Debenham",
-        "email": "matt.debenhamfma@gmail.com",
+        "email": "matt.debenham@fma.com",
         "gender": "Male",
         "DOB": "20/12/1992",
         "weight": "91kg",
@@ -45,7 +45,7 @@ export default [
     },
     {
         "name": "Joanna Miarczynska",
-        "email": "joanna44fma@gmail.com",
+        "email": "joanna@fma.com",
         "gender": "Female",
         "DOB": "26/06/1980",
         "weight": "48kg",
@@ -56,7 +56,7 @@ export default [
     },
     {
         "name": "Matt Arnold",
-        "email": "mattyacht123fma@gmail.com",
+        "email": "matt.arnoldfma@fma.com",
         "gender": "Male",
         "DOB": "15/01/1992",
         "weight": "72kg",
@@ -67,7 +67,7 @@ export default [
     },
     {
         "name": "Grant Bambrick-Day",
-        "email": "grantdayfma@live.co.uk",
+        "email": "grant@fma.com",
         "gender": "Male",
         "DOB": "10/01/1988",
         "weight": "82kg",
@@ -78,7 +78,7 @@ export default [
     },
     {
         "name": "Adam Castley",
-        "email": "adamj94fma@gmail.com",
+        "email": "adam.castley@fma.com",
         "gender": "Male",
         "DOB": "28/05/1994",
         "weight": "100kg",
@@ -89,7 +89,7 @@ export default [
     },
     {
         "name": "James Flett",
-        "email": "jflett84.fma@gmail.com",
+        "email": "james.flett@fma.com",
         "gender": "Male",
         "DOB": "23/01/1984",
         "weight": "87kg",
@@ -100,7 +100,7 @@ export default [
     },
     {
         "name": "Jamani Farrell",
-        "email": "jam.farell97.fma@gmail.com",
+        "email": "jam.farell@fma.com",
         "gender": "Female",
         "DOB": "13/11/1997",
         "weight": "70kg",
@@ -111,7 +111,7 @@ export default [
     },
     {
         "name": "Carl Atkinson",
-        "email": "carl.atkinson.fma@yahoo.co.uk",
+        "email": "carl.atkinson@fma.com",
         "gender": "Male",
         "DOB": "28/12/1978",
         "weight": "88kg",
@@ -133,7 +133,7 @@ export default [
     },
     {
         "name": "Clayton Knowles",
-        "email": "Claytonkknowles.fma@gmail.com",
+        "email": "Clayton.knowles.@fma.com",
         "gender": "Male",
         "DOB": "21/11/1991",
         "weight": "92kg",
@@ -144,7 +144,7 @@ export default [
     },
     {
         "name": "Millie Oulton",
-        "email": "millieoulton.fma@gmail.com",
+        "email": "millie.oulton.@fma.com",
         "gender": "Female",
         "DOB": "15/01/1999",
         "weight": "62kg",
@@ -155,7 +155,7 @@ export default [
     },
     {
         "name": "Nuno Ramalho",
-        "email": "njramalho.fma@gmail.com",
+        "email": "nuno@fma.com",
         "gender": "Male",
         "DOB": "28/07/1975",
         "weight": "72kg",
@@ -166,7 +166,7 @@ export default [
     },
     {
         "name": "Peter Woods",
-        "email": "Peterwoods2001.fma@gmail.com",
+        "email": "Peter.woods@fma.com",
         "gender": "Male",
         "DOB": "01/08/2001",
         "weight": "94kg",
@@ -177,7 +177,7 @@ export default [
     },
     {
         "name": "John Cann",
-        "email": "John@roamathletics20.com",
+        "email": "John.cann@fma.com",
         "gender": "Male",
         "DOB": "07/12/1986",
         "weight": "88kg",
@@ -188,7 +188,7 @@ export default [
     },
     {
         "name": "Vincent Douthwaite",
-        "email": "vincent.kd.fma@hotmail.com",
+        "email": "vincent@fma.com",
         "gender": "Male",
         "DOB": "28/09/1986",
         "weight": "85kg",
@@ -199,7 +199,7 @@ export default [
     },
     {
         "name": "Kieran Daniel",
-        "email": "kdaniel1979.fma@gmail.com",
+        "email": "kierandanielfma.comm",
         "gender": "Male",
         "DOB": "02/06/1979",
         "weight": "88kg",

@@ -23,8 +23,9 @@ router.route('/members/:belt/views/user/new').get(async function (req, res, next
 router.route('/user').post(async function (req, res, next) {
     try {
         // Get the new account from the body of request
+        console.log(req.body)
         const user = await User.create(req.body)
-        // res.status(400).send(newDivision)
+        console.log(user)
         res.redirect('/login')
 
     } catch (e) {
@@ -33,7 +34,7 @@ router.route('/user').post(async function (req, res, next) {
 })
 
 // TODO login
-// Login page (just like signup.ejs) ✅
+// Login page (just like user.ejs) ✅
 // GET /login controller to return our ejs page ✅
 // When you sign up, redirect to login ✅
 router.get('/login', (req, res, next) => {
@@ -50,6 +51,10 @@ router.get('/login', (req, res, next) => {
       // ? We need to know if the login was actually successful!
       // 1) Get the user for this login attempt (with email)
       const user = await User.findOne({ email: req.body.email })
+      console.log(`user: ${user}`)
+      if (!user) {
+        return res.status(404).send({ message: "User not found" });
+      }
       // 2) Compare the 2 password hashes to see if they're the same.
       // ! This will check if the login is a failure, and respond accordingly.
       if (!user.isPasswordValid(req.body.password)) {

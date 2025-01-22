@@ -1,16 +1,17 @@
 <%- include('../home') %>
-<body>
+<section class="single-profile">
     <div class="profile-details">
         <div class="profile-details-container">
             <div>
-                <img src ="<%= member.headshot %>" alt="<%= member.name %>">
+                <img src="<%= member.headshot ? member.headshot : (member.gender === 'Male' ? '/images/male_headshot.jpeg' : '/images/female_headshot.jpeg') %>" 
+                    alt="<%= member.name %>">
             </div>
             <div>
-                <h1><%= member.name %></h1>
-                <p><%= member.belt %></p>
-                <p><%= member.gender %></p>
-                <p><%= member.DOB %></p>
-                <p><%= member.weight %></p>
+                <h2><%= member.name %></h2>
+                <p><strong>Belt: </strong><%= member.belt %></p>
+                <p><strong>Gender: </strong><%= member.gender %></p>
+                <p><strong>DOB: </strong><%= member.DOB %></p>
+                <p><strong>Weight: </strong><%= member.weight %></p>
                 <div class="profile-icons">
                     <% if (member.instagram && member.instagram !== "") { %>
                     <a href="<%= member.instagram %>" target="_blank"><i class="fi fi-brands-instagram"></i></a>
@@ -19,15 +20,15 @@
                     <a href="<%= member.facebook %>" target="_blank"><i class="fi fi-brands-facebook"></i></a>
                     <% } %>
                 </div>
-                <form action="/members/<%=member._id%>?_method=DELETE" method="POST">
-                    <button type="submit">
-                    Delete <%= member.name %>
-                    </button>
-                </form>
-                <!-- Link to take us to the new edit page at /division/update/:id -->
-                <button onclick="window.location.href='/members/update/<%=member._id%>'">Update</button>
+                <!-- Update and Delete Buttons -->
+                <div class="profile-actions">
+                    <button class="btn btn-danger" onclick="window.location.href='/members/update/<%=member._id%>'">Update</button>
+                    <form action="/members/<%=member._id%>?_method=DELETE" method="POST" style="display: inline;">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</body>
+</section>
 <%- include('../footer') %>

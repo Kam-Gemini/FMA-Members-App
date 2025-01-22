@@ -17,27 +17,20 @@ const userSchema = new mongoose.Schema({
         lowercase: true, // Converts email to lowercase before saving
         trim: true, // Removes whitespace
         validate: {
-            message: "Please enter a valid email.",
-            validator: (email) => validator.isEmail(email)
-        },
+            validator: (email) => validator.isEmail(email),
+            message: "Please enter a valid email."
+        }
     },
     password: {
         type: String,
         required: true,
-        minlength: [8, 'Must be at least 8 characters'],
-        validate: [
-            {
-              message: "Password must be at least 8 characters in length.",
-              validator: (password) => password.length >= 8
-            },
-            {
-              message: "Password must contain at least 1 uppercase character, number and symbol",
-              validator: (password) => validator.isStrongPassword(password, 
-                { minUppercase: 1, minSymbols: 1, minNumbers: 1 }
-              )
-            }
-          ]
-    },
+        validate: {
+            validator: (password) => validator.isStrongPassword(password, {
+                minLength: 8, minUppercase: 1, minSymbols: 1, minNumbers: 1
+            }),
+            message: "Password must be at least 8 characters and contain at least 1 uppercase letter, 1 number, and 1 symbol."
+        }
+    },    
     role: {
         type: String,
         required: true,

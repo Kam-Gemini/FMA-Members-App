@@ -3,7 +3,9 @@
         <% allMembers.forEach((member) => { %>
         <div class="profile-pic">
             <a href="/members/<%= member._id %>">
-                <img src="<%= member.headshot %>" alt="<%= member.name %>" 
+                <img 
+                    src="<%= member.headshot ? member.headshot : (member.gender === 'Male' ? '/images/male_headshot.jpeg' : '/images/female_headshot.jpeg') %>" 
+                    alt="<%= member.name %>" 
                     style="border: 6px solid <%= member.belt %>;
                         <% if (member.belt === 'White') { %>
                             outline: 2px solid rgba(0, 0, 0, 0.2);
@@ -16,14 +18,14 @@
                         <% } %>
                     ">
             </a>
-            <h2><%= member.name %></h2></a>
-            <h3><%= member.belt %> Belt</h3>
+            <h3><%= member.name %></h3></a>
+            <h4><%= member.belt %> Belt</h4>
             <div class="social-icons">
                 <% if (member.instagram && member.instagram !== "") { %>
-                <a href="<%= member.instagram %>" target="_blank"><i class="fi fi-brands-instagram"></i></a>
+                <a href="<%= member.instagram %>" target="_blank"><img src="/images/instagram.png" id="instagram"></a>
                 <% } %>
                 <% if (member.facebook && member.facebook !== "") { %>
-                <a href="<%= member.facebook %>" target="_blank"><i class="fi fi-brands-facebook"></i></a>
+                <a href="<%= member.facebook %>" target="_blank"><img src="/images/facebook.png" id="facebook"></a>
                 <% } %>
             </div>
         </div>

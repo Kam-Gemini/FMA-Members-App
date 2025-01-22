@@ -19,8 +19,7 @@ const memberSchema = new mongoose.Schema({
         enum: ['Male', 'Female']
     },
     DOB: { 
-        type: String, 
-        required: true
+        type: String,
     },
     weight: { 
         type: String, 
