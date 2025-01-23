@@ -153,44 +153,41 @@ router.route('/members/update/:id').get(async function(req, res, next) {
     }
   })
 
-router.route('/members/:id').put(async function (req, res, next) {
+  router.route('/members/:id').put(async function (req, res, next) {
     try {
-
+        // Check if the user is logged in
         if (!req.session.user) {
-            req.flash("error",  "You must be logged in to update a profile.")
+            req.flash("error", "You must be logged in to update a profile.");
+            return res.redirect('/login'); // Redirect to login instead of using `member._id`
+        }
+
+        const userRole = req.session.user.role;
+        const userEmail = req.session.user.email;
+
+        // Fetch the member to perform further checks
+        const member = await Member.findById(req.params.id);
+        if (!member) {
+            req.flash("error", "Member not found.");
+            return res.redirect('/members');
+        }
+
+        // Check if the user is authorized to update the profile
+        if (userRole !== "Admin" && member.email !== userEmail) {
+            req.flash("error", "You must be an Admin User or the owner of the profile to update it.");
             return res.redirect(`/members/update/${member._id}`);
         }
 
-        const userRole = req.session.user.role
-        const userEmail = req.session.user.email
-
-        const member = await Member.findById(req.params.id);
-
-        if (userRole !== "Admin") {
-            // Fetch the member to check the email
-            const member = await Member.findById(req.params.id);
-            if (!member) {
-                req.flash("error", "Member not found.")
-                res.redirect('/members')
-            }
-
-            if (member.email !== userEmail) {
-                req.flash("error",  "You must be an Admin User or the owner of the profile to update it.")
-                return res.redirect(`/members/update/${member._id}`);
-            };
-        }
-        
+        // Update the member while ensuring validations are run
         const memberId = req.params.id;
         const updatedMember = await Member.findByIdAndUpdate(memberId, req.body, {
             new: true,
-            runValidators: true, // Ensure Mongoose validations run on update
+            runValidators: true, // Ensures Mongoose validation rules are applied
         });
 
-        res.redirect('/members')
+        res.redirect('/members');
     } catch (e) {
-        // If any other error occurs, send the error to the next middleware
+        // Handle Mongoose validation errors
         if (e.name === 'ValidationError') {
-            // Handle Mongoose validation errors
             for (const field in e.errors) {
                 req.flash('error', e.errors[field].message);
             }
@@ -199,6 +196,7 @@ router.route('/members/:id').put(async function (req, res, next) {
             next(e);
         }
     }
-})
+});
+
 
 export default router

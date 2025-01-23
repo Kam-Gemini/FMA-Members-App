@@ -63,12 +63,11 @@ userSchema
 // * the password with a hashed version.
 // mongoose has a lifecycle for each document, e.g. validation, saving etc.
 // this one runs before saving a document to the database.
-userSchema
-    .pre('save', function (next) {
-    // 'this' refers to the doc you're about to save.
-    // this line replaces the password with the hashed password.
-    this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync())
-    next() // this tells mongoose we're done.
+userSchema.pre('save', function(next) {
+    if (this.isModified('password')) {
+      this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync())
+    }
+    next()
 })
 
 // * I need a function to compare the passwords and return true

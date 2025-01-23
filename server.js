@@ -73,6 +73,11 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 
+app.use(function (req, res, next) {
+    res.locals.user = req.session.user || null
+    next()
+})
+
 // * New logging middleware
 app.use(logger)
 

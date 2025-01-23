@@ -25,7 +25,13 @@
                 <div class="icons"><a href="/members/new"><img src="/images/add-friend.png" id="add-user">Add Profile</a></div>
                 <div class="icons"><a href="/members" id="belt-link"><img src="/images/grey_navbar.png" id="grey-belt">Belt</a></div>
                 <div class="icons"><a href="views/user/new"><i class="fi fi-sr-clipboard-list"></i><span>Register</span></a></div>
+                <% if (user) { %>
+                    <div class="icons"><a href="#" onclick="document.getElementById('logout-form').submit();" class="btn btn-danger text-white">Sign out</a>
+                        <form id="logout-form" action="/logout" method="POST" style="display: none;"></form>
+                    </div>
+                <% } else {%>
                 <div class="icons"><a href="/login"><i class="fi fi-sr-user"></i><span>Sign in</span></a></div>
+                <% } %>
             </div>
         </nav>
     </div>

@@ -9,10 +9,6 @@
   }
 
 .wrapper {
-    /*border-top: 2px solid #6C757D;
-    /* Adds a top border (stroke) */
-    /*border-bottom: 2px solid #6C757D;
-    /* Adds a bottom border (stroke) */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     /* Optional shadow for a sleek effect */
     padding: 10px 0;
@@ -22,6 +18,10 @@ nav {
     display: flex;
     justify-content: space-between;
     margin: 5px 250px 5px 250px;
+}
+
+.text-white {
+    color: white !important;
 }
 
 .belts {
@@ -173,11 +173,10 @@ main {
 /* General styles for banner containers */
 .banner-container {
     width: 100%;
-    /* Full width */
     height: 550px;
-    /* Set desired height */
     overflow: hidden;
     position: relative;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
 }
 
 /* Sliding wrapper inside each container */
