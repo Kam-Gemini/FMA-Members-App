@@ -22,8 +22,6 @@ import errorHandler from '../../middleware/errorHandler.js'
 
 import flash from 'connect-flash'
 
-import MongoStore from 'connect-mongo'
-
 import path from "path"; // ! You need this line for stylesheets/JS
 
 import { fileURLToPath } from "url" // ! You need this line for stylesheets/JS
