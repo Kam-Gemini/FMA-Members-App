@@ -29,7 +29,8 @@ router.post('/members', upload.single("image"), async function (req, res, next) 
     try {
 
         if (!req.session.user) {
-        return res.status(402).send({ message: "You must be logged in to post a profile." })
+            req.flash("error",  "You must be logged in to post a profile")
+            return res.redirect(`/login`)
         }
 
         // ! Add the user to the req.body, from the cookie

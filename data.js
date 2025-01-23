@@ -133,7 +133,7 @@ export default [
     },
     {
         "name": "Clayton Knowles",
-        "email": "Clayton.knowles.@fma.com",
+        "email": "Clayton.knowles@fma.com",
         "gender": "Male",
         "DOB": "21/11/1991",
         "weight": "92kg",
@@ -144,7 +144,7 @@ export default [
     },
     {
         "name": "Millie Oulton",
-        "email": "millie.oulton.@fma.com",
+        "email": "millie.oulton@fma.com",
         "gender": "Female",
         "DOB": "15/01/1999",
         "weight": "62kg",
@@ -199,7 +199,7 @@ export default [
     },
     {
         "name": "Kieran Daniel",
-        "email": "kierandanielfma.comm",
+        "email": "kieran.daniel@fma.comm",
         "gender": "Male",
         "DOB": "02/06/1979",
         "weight": "88kg",

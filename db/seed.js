@@ -8,10 +8,13 @@ import User from '../models/user.js'
 // ? We also need to use mongoose to connect to MongoDB
 // ? we need a data.js file to use to seed our data.
 
+import dotenv from 'dotenv'
+dotenv.config()
+
 async function seed() {
   // This function should seed our database with data from our file.
   console.log('Connecting to database 🌱')
-  await mongoose.connect('mongodb://127.0.0.1:27017/members-db')
+  await mongoose.connect(process.env.MONGODB_URI)
   
   // ! This code wipes the database clean.
   console.log('Clearing database... 🧹')
@@ -25,7 +28,7 @@ async function seed() {
   // ? Let's seed a user first, and then use that user for our members.
   const user = await User.create({
     username: "Kam",
-    email: "kamran.raja@hotmail.co.uk",
+    email: "kamran.raja@fma.com",
     password: "Kam1234$Abc",
     confirmPassword: "Kam1234$Abc",
     role: "Admin"
