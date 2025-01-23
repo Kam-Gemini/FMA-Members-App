@@ -9,12 +9,13 @@
   }
 
 .wrapper {
-    border-top: 2px solid #6C757D;
+    /*border-top: 2px solid #6C757D;
     /* Adds a top border (stroke) */
-    border-bottom: 2px solid #6C757D;
+    /*border-bottom: 2px solid #6C757D;
     /* Adds a bottom border (stroke) */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     /* Optional shadow for a sleek effect */
+    padding: 10px 0;
 }
 
 nav {

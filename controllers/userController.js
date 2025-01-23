@@ -7,38 +7,53 @@ const router = express.Router()
 router.route('/views/user/new').get(async function (req, res, next) {
   try {
       res.render('user/new.ejs')
-  } catch (e) {
-      next (e)
+    } catch (e) {
+      next(e)
   }
 })
 
 router.route('/members/views/user/new').get(async function (req, res, next) {
   try {
       res.render('user/new.ejs')
-  } catch (e) {
-      next (e)
+    } catch (e) {
+      next(e)
+  }
+})
+
+router.route('/members/belt/views/user/new').get(async function (req, res, next) {
+  try {
+      res.render('user/new.ejs')
+    } catch (e) {
+      next(e)
   }
 })
 
 router.route('/members/:belt/views/user/new').get(async function (req, res, next) {
     try {
         res.render('user/new.ejs')
-    } catch (e) {
-        next (e)
+      } catch (e) {
+        next(e)
     }
 })
 
 router.route('/user').post(async function (req, res, next) {
     try {
         // Get the new account from the body of request
-        console.log(req.body)
         const user = await User.create(req.body)
-        console.log(user)
         res.redirect('/login')
 
-    } catch (e) {
-        next(e)
-    }
+      } catch(e) {
+        // If any other error occurs, send the error to the next middleware
+        if (e.name === 'ValidationError') {
+          // Handle Mongoose validation errors
+          for (const field in e.errors) {
+              req.flash('error', e.errors[field].message);
+          }
+          return res.redirect('/views/user/new');
+          } else {
+              next(e);
+          }
+      }
 })
 
 // TODO login
@@ -59,14 +74,15 @@ router.get('/login', (req, res, next) => {
       // ? We need to know if the login was actually successful!
       // 1) Get the user for this login attempt (with email)
       const user = await User.findOne({ email: req.body.email })
-      console.log(`user: ${user}`)
       if (!user) {
-        return res.status(404).send({ message: "User not found" });
+        req.flash("error",  "There is no user account for the email entered.")
+        return res.redirect('/login');
       }
       // 2) Compare the 2 password hashes to see if they're the same.
       // ! This will check if the login is a failure, and respond accordingly.
       if (!user.isPasswordValid(req.body.password)) {
-        return res.status(401).send({ message: "Unauthorized"})
+        req.flash("error",  "The password is incorrect, please try again.")
+        return res.redirect('/login');
       }
   
       // If we succeed, we do this later:
@@ -74,7 +90,16 @@ router.get('/login', (req, res, next) => {
       res.redirect('members')
   
     } catch(e) {
-      next(e)
+      // If any other error occurs, send the error to the next middleware
+      if (e.name === 'ValidationError') {
+        // Handle Mongoose validation errors
+        for (const field in e.errors) {
+            req.flash('error', e.errors[field].message);
+        }
+        return res.redirect('/login');
+        } else {
+            next(e);
+        }
     }
   })
 

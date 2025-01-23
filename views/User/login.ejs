@@ -14,6 +14,13 @@
         <div class="logo">
           <img src="/images/FMA_logo.png" alt="FMA" id="logo">
       </div>
+      <% if (errorMessages && errorMessages.length > 0) { %>
+        <div class="alert alert-danger">
+            <% errorMessages.forEach(function (msg) { %>
+                <p><%= msg %></p>
+            <% }) %>
+        </div>
+      <% } %>
         <form action="/login" method="POST">
             <!-- Email Input -->
             <div class="mb-3 d-flex align-items-center">

@@ -6,12 +6,12 @@ import validator from "validator"
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: true,
+        required: [true, 'You must enter a user name.'],
         unique: true
     },
     email: {
         type: String,
-        required: [true, 'Email is required'], // Ensures email is mandatory
+        required: [true, 'Please enter your email.'], // Ensures email is mandatory
         unique: true, // Ensures email is unique in the database
         lowercase: true, // Converts email to lowercase before saving
         trim: true, // Removes whitespace
@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
+        required: [true, 'Please enter your password'],
         validate: {
             validator: (password) => validator.isStrongPassword(password, {
                 minLength: 8, minUppercase: 1, minSymbols: 1, minNumbers: 1
@@ -54,7 +54,7 @@ userSchema
 userSchema
     .pre("validate", function(next) {
         if (this.isModified("password") && this.password !== this._confirmPassword){
-            this.invalidate("confirmPassword", "Does not match")
+            this.invalidate("confirmPassword", "Passwords do not match. Please re-type.")
         }
         next()
     })
