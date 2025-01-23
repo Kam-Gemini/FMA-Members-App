@@ -40,7 +40,6 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public"))); // ! You need this line for stylesheets/JS
 
 // Serve Flaticon icons as a static resource
-app.use("/flaticon", express.static(path.join(__dirname, "node_modules/@flaticon/flaticon-uicons")));
 
 // * Add sessions to express
 app.use(session({

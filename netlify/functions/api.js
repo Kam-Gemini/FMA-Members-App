@@ -22,15 +22,6 @@ import errorHandler from '../../middleware/errorHandler.js'
 
 import flash from 'connect-flash'
 
-import path from "path"; // ! You need this line for stylesheets/JS
-
-import { fileURLToPath } from "url" // ! You need this line for stylesheets/JS
-
-// Get __dirname equivalent
-const __filename = fileURLToPath(import.meta.url) // ! You need this line for stylesheets/JS
-
-const __dirname = path.dirname(__filename) // ! You need this line for stylesheets/JS
-
 // import dotenv to extract environment variables from the .env file
 import dotenv from 'dotenv'
 dotenv.config() // initalises .env
@@ -45,9 +36,6 @@ app.set("view engine", "ejs");
 
 // Serve static files
 app.use(express.static("public")); // ! You need this line for stylesheets/JS
-
-// Serve Flaticon icons as a static resource
-app.use("/flaticon", express.static(path.join(__dirname, "node_modules/@flaticon/flaticon-uicons")));
 
 // * Add sessions to express
 app.use(session({
