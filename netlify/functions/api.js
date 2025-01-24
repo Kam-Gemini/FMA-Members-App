@@ -16,8 +16,6 @@ import memberController from '../../controllers/memberController.js'
 
 import userController from '../../controllers/userController.js'
 
-import logger from '../../middleware/logger.js'
-
 import errorHandler from '../../middleware/errorHandler.js'
 
 import flash from 'connect-flash'
@@ -31,17 +29,11 @@ mongoose.connect(process.env.MONGODB_URI)
 
 const app = express()
 
-// Set EJS as the template engine
-app.set("view engine", "ejs");
-
-// Serve static files
-app.use(express.static("public")); // ! You need this line for stylesheets/JS
-
 // * Add sessions to express
 app.use(session({
-    secret: 'timeonthemats', // Replace with a strong secret
+    secret: process.env.SECRET_KEY, // Replace with a strong secret
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     store: MongoStore.create({
         mongoUrl: process.env.MONGODB_URI,
         collectionName: 'sessions',
@@ -53,6 +45,18 @@ app.use(session({
     },
 }));
 
+app.use(express.json())
+
+// Serve static files
+app.use(express.static("public")); // ! You need this line for stylesheets/JS
+
+// Set EJS as the template engine
+app.set("view engine", "ejs");
+
+// * This will expect the form data from your form, and add to req.body 
+app.use(express.urlencoded({ extended: false }))
+app.use(methodOverride('_method'))
+
 app.use(flash())
 
 // Make flash messages available to all views
@@ -62,19 +66,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.json())
-
-// * This will expect the form data from your form, and add to req.body 
-app.use(express.urlencoded({ extended: false }))
-app.use(methodOverride('_method'))
-
 app.use(function (req, res, next) {
     res.locals.user = req.session.user || null
     next()
 })
-
-// * New logging middleware
-app.use(logger)
 
 // * Have our app use the new member controller
 app.use('/', memberController)

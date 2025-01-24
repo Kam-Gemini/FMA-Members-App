@@ -122,7 +122,8 @@ router.route('/members/:id').delete(async function (req, res, next) {
         const member = await Member.findById(memberId).populate('user')
 
         if (!req.session.user) {
-            res.redirect("/login")
+            req.flash("error", "You must be logged in to delete a profile.");
+            return res.redirect('/login'); // Redirect to login instead of using `member._id`
         }
 
         if (!member) {
