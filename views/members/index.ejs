@@ -6,7 +6,7 @@
                 <% if (!member.headshot) { %>
                     <!-- Placeholder image logic -->
                     <img 
-                      src="<%= member.gender === 'Male' ? '/images/male_headshot.jpeg' : '/images/female_headshot.jpeg' %>" 
+                      src="<%= member.gender === 'Male' ? 'https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716036/male_headshot_dwklnh.jpg' : 'https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716035/female_headshot_ntxmak.jpg' %>" 
                       alt="<%= member.name %>" 
                       style="border: 6px solid <%= member.belt %>;
                         <% if (member.belt.toLowerCase() === 'white') { %>
@@ -57,10 +57,10 @@
             <h4><%= member.belt %> Belt</h4>
             <div class="social-icons">
                 <% if (member.instagram && member.instagram !== "") { %>
-                <a href="<%= member.instagram %>" target="_blank"><img src="/images/instagram.png" id="instagram"></a>
+                <a href="<%= member.instagram %>" target="_blank"><img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1737715786/instagram_akkmht.png" id="instagram"></a>
                 <% } %>
                 <% if (member.facebook && member.facebook !== "") { %>
-                <a href="<%= member.facebook %>" target="_blank"><img src="/images/facebook.png" id="facebook"></a>
+                <a href="<%= member.facebook %>" target="_blank"><img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1737715805/facebook_urjig6.png" id="facebook"></a>
                 <% } %>
             </div>
         </div>
