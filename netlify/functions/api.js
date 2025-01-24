@@ -33,7 +33,7 @@ const app = express()
 app.use(session({
     secret: process.env.SECRET_KEY, // Replace with a strong secret
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: MongoStore.create({
         mongoUrl: process.env.MONGODB_URI,
         collectionName: 'sessions',
