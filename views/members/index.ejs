@@ -19,10 +19,10 @@
                           border: 6px solid #774936;
                         <% } %>
                       ">
-                  <% } else if (member.headshot.startsWith('/images')) { %>
+                  <% } else if (member.headshot.trim().includes('image')) { %>
                     <!-- "/images" prefix logic -->
                     <img 
-                      src="<%= member.headshot %>" 
+                      src=<%= member.headshot %>
                       alt="<%= member.name %>" 
                       style="border: 6px solid <%= member.belt %>;
                         <% if (member.belt.toLowerCase() === 'white') { %>

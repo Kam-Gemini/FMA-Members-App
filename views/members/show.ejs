@@ -6,13 +6,13 @@
                 <% if (!member.headshot) { %>
                     <!-- Placeholder image logic -->
                     <img 
-                      src="<%= member.gender === 'Male' ? '/images/male_headshot.jpeg' : '/images/female_headshot.jpeg' %>" 
-                      alt="<%= member.name %>" 
+                      src="<%= member.gender === 'Male' ? 'https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716036/male_headshot_dwklnh.jpg' : 'https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716035/female_headshot_ntxmak.jpg' %>" 
+                      alt="<%= member.name %>"
                     >
-                  <% } else if (member.headshot.startsWith('/images')) { %>
+                  <% } else if (member.headshot.includes('image')) { %>
                     <!-- "/images" prefix logic -->
                     <img 
-                      src="<%= member.headshot %>" 
+                      src="<%= member.headshot %>"
                       alt="<%= member.name %>" 
                     >
                   <% } else { %>

@@ -54,7 +54,6 @@ router.post('/members', upload.single("image"), async function (req, res, next) 
             for (const field in e.errors) {
                 req.flash('error', e.errors[field].message);
             }
-            console.log(req.body)
             // Re-render the form with the current input data and error messages
             return res.render('members/new', {
                 errorMessages: req.flash('error'),
