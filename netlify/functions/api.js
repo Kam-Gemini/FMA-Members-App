@@ -27,6 +27,9 @@ dotenv.config() // initalises .env
 // 🚨 Grab the Mongo URL variable from your .env file:
 mongoose.connect(process.env.MONGODB_URI)
 
+mongoose.connection.on('error', err => { console.error('MongoDB connection error:', err); }); 
+mongoose.connection.on('connected', () => { console.log('MongoDB connected successfully'); });
+
 const app = express()
 
 // * Add sessions to express
