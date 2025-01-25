@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.route('/views/user/new').get(async function (req, res, next) {
   try {
-      res.render('user/new.ejs')
+    res.render('user/new.ejs');
     } catch (e) {
       next(e)
   }
@@ -38,8 +38,22 @@ router.route('/members/:belt/views/user/new').get(async function (req, res, next
 
 router.route('/user').post(async function (req, res, next) {
     try {
-        // Get the new account from the body of request
-        const user = await User.create(req.body)
+        const enteredEmail = req.body.email.trim().toLowerCase()
+        const enteredUsername = req.body.username
+        const existingEmail = await User.findOne({email: enteredEmail})
+        const existingUsername = await User.findOne({username: enteredUsername})
+
+        if (existingEmail) {
+          req.flash("error",  "The email you have entered is already registered with another account.")
+          return res.redirect('/views/user/new');
+        }
+
+        if (existingUsername) {
+          req.flash("error",  "The user name you have entered is already registered with another account.")
+          return res.redirect('/views/user/new');
+        }
+
+        await User.create(req.body)
         res.redirect('/login')
 
       } catch(e) {
@@ -50,9 +64,7 @@ router.route('/user').post(async function (req, res, next) {
               req.flash('error', e.errors[field].message);
           }
           return res.redirect('/views/user/new');
-          } else {
-              next(e);
-          }
+        } 
       }
 })
 
@@ -87,7 +99,7 @@ router.get('/login', (req, res, next) => {
   
       // If we succeed, we do this later:
       req.session.user = user
-      res.redirect('members')
+      res.redirect('/members')
   
     } catch(e) {
       // If any other error occurs, send the error to the next middleware

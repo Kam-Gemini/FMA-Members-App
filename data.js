@@ -8,7 +8,7 @@ export default [
         "belt": "Black",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737715880/max-campos_nsolc5.jpg",
         "instagram": "https://www.instagram.com/maxcamposbjj/",
-        "facebook": "https://www.facebook.com/maxcamposbjj/",
+        "facebook": "https://www.facebook.com/maxcamposbjj/"
     },
     {
         "name": "Mark Phung",
@@ -19,7 +19,7 @@ export default [
         "belt": "Black",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737715868/mark-phung_kiwrmg.jpg",
         "instagram": "https://www.instagram.com/farnham_martial_arts/",
-        "facebook": "https://www.facebook.com/search/top?q=mark%20phung%20bjj",
+        "facebook": "https://www.facebook.com/search/top?q=mark%20phung%20bjj"
     },
     {
         "name": "Kamran Raja",
@@ -30,7 +30,7 @@ export default [
         "belt": "Purple",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716036/kamran-raja_nvq2sz.jpg",
         "instagram": "https://www.instagram.com/kamran.raja1982/?hl=en",
-        "facebook": "https://www.facebook.com/kamran.raja.39/?locale=en_GB",
+        "facebook": "https://www.facebook.com/kamran.raja.39/?locale=en_GB"
     },
     {
         "name": "Matt Debenham",
@@ -41,7 +41,7 @@ export default [
         "belt": "Purple",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716037/matt-debenham-bw_ine7g1.jpg",
         "instagram": "",
-        "facebook": "",
+        "facebook": ""
     },
     {
         "name": "Joanna Miarczynska",
@@ -52,7 +52,7 @@ export default [
         "belt": "Blue",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716037/joanna-miarczynska_tuzvzt.jpg",
         "instagram": "",
-        "facebook": "https://www.facebook.com/joanna.miarczynska?locale=en_GB",
+        "facebook": "https://www.facebook.com/joanna.miarczynska?locale=en_GB"
     },
     {
         "name": "Matt Arnold",
@@ -63,7 +63,7 @@ export default [
         "belt": "Blue",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716038/matt-arnold_lvzkoi.jpg",
         "instagram": "https://www.instagram.com/mattttarnold/?hl=en",
-        "facebook": "",
+        "facebook": ""
     },
     {
         "name": "Grant Bambrick-Day",
@@ -74,7 +74,7 @@ export default [
         "belt": "Purple",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716040/grant-bambrick-day_dwodes.jpg",
         "instagram": "https://www.instagram.com/bearded_vegetable/?hl=en",
-        "facebook": "https://www.facebook.com/Grantus.Day?locale=en_GB",
+        "facebook": "https://www.facebook.com/Grantus.Day?locale=en_GB"
     },
     {
         "name": "Adam Castley",
@@ -85,7 +85,7 @@ export default [
         "belt": "Purple",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716040/adam-castley_zod6cf.jpg",
         "instagram": "https://www.instagram.com/castl38/?hl=en",
-        "facebook": "",
+        "facebook": ""
     },
     {
         "name": "James Flett",
@@ -96,7 +96,7 @@ export default [
         "belt": "Blue",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716041/james-flett_rsxgmw.jpg",
         "instagram": "https://www.instagram.com/farmerflett/?hl=en",
-        "facebook": "https://www.facebook.com/james.flett.18?locale=en_GB",
+        "facebook": "https://www.facebook.com/james.flett.18?locale=en_GB"
     },
     {
         "name": "Jamani Farrell",
@@ -107,7 +107,7 @@ export default [
         "belt": "Blue",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716046/jamani-farrell_uk0czw.jpg",
         "instagram": "https://www.instagram.com/jaammaanni/?hl=en",
-        "facebook": "",
+        "facebook": ""
     },
     {
         "name": "Carl Atkinson",
@@ -118,7 +118,7 @@ export default [
         "belt": "Blue",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716042/carl_atkinson_auybx1.jpg",
         "instagram": "https://www.instagram.com/carlmadasafish/?hl=en",
-        "facebook": "https://www.facebook.com/carlmadasafish?locale=en_GB",
+        "facebook": "https://www.facebook.com/carlmadasafish?locale=en_GB"
     },
     {
         "name": "Matt Roberts",
@@ -129,7 +129,7 @@ export default [
         "belt": "White",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716042/matt_roberts_iu1yfm.jpg",
         "instagram": "",
-        "facebook": "",
+        "facebook": ""
     },
     {
         "name": "Clayton Knowles",
@@ -140,7 +140,7 @@ export default [
         "belt": "Brown",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716043/clayton_cbjogo.jpg",
         "instagram": "https://www.instagram.com/claytonjesse_k/?hl=en",
-        "facebook": "https://www.facebook.com/clayton.j.knowles.9?locale=en_GB",
+        "facebook": "https://www.facebook.com/clayton.j.knowles.9?locale=en_GB"
     },
     {
         "name": "Millie Oulton",
@@ -151,7 +151,7 @@ export default [
         "belt": "White",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716035/female_headshot_ntxmak.jpg",
         "instagram": "https://www.instagram.com/millieoulton/?hl=en",
-        "facebook": "https://www.facebook.com/millie.oulton?locale=en_GB",
+        "facebook": "https://www.facebook.com/millie.oulton?locale=en_GB"
     },
     {
         "name": "Nuno Ramalho",
@@ -162,7 +162,7 @@ export default [
         "belt": "Purple",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716044/nuno_s2g86i.jpg",
         "instagram": "https://www.instagram.com/njramalho/?hl=en",
-        "facebook": "",
+        "facebook": ""
     },
     {
         "name": "Peter Woods",
@@ -173,7 +173,7 @@ export default [
         "belt": "White",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716036/male_headshot_dwklnh.jpg",
         "instagram": "https://www.instagram.com/_peter_woods/?hl=en",
-        "facebook": "",
+        "facebook": ""
     },
     {
         "name": "John Cann",
@@ -184,7 +184,7 @@ export default [
         "belt": "Brown",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716044/john-cann_xsntjk.jpg",
         "instagram": "https://www.instagram.com/johncannpt/?hl=en",
-        "facebook": "",
+        "facebook": ""
     },
     {
         "name": "Vincent Douthwaite",
@@ -195,7 +195,7 @@ export default [
         "belt": "Blue",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716034/vincent-douthwaite_l2gv4a.jpg",
         "instagram": "https://www.instagram.com/vincent.k.d/?hl=en",
-        "facebook": "",
+        "facebook": ""
     },
     {
         "name": "Kieran Daniel",
@@ -206,6 +206,6 @@ export default [
         "belt": "White",
         "headshot": "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716036/male_headshot_dwklnh.jpg",
         "instagram": "https://www.instagram.com/kieran30156/?hl=en",
-        "facebook": "",
+        "facebook": ""
     }
 ]

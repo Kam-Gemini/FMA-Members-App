@@ -13,7 +13,6 @@ const memberSchema = new mongoose.Schema({
     email: {
             type: String,
             required: [true, 'Email is required'], // Ensures email is mandatory
-            unique: true, // Ensures email is unique in the database
             lowercase: true, // Converts email to lowercase before saving
             trim: true, // Removes whitespace
             validate: {

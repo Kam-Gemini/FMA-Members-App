@@ -7,12 +7,10 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: [true, 'You must enter a user name.'],
-        unique: true
     },
     email: {
         type: String,
         required: [true, 'Please enter your email.'], // Ensures email is mandatory
-        unique: true, // Ensures email is unique in the database
         lowercase: true, // Converts email to lowercase before saving
         trim: true, // Removes whitespace
         validate: {
@@ -22,7 +20,7 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, 'Please enter your password'],
+        required: [true, 'Please enter your password.'],
         validate: {
             validator: (password) => validator.isStrongPassword(password, {
                 minLength: 8, minUppercase: 1, minSymbols: 1, minNumbers: 1

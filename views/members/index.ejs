@@ -1,70 +1,40 @@
 <%- include('../home') %>
     <section class="profiles-container">
-        <% allMembers.forEach((member) => { %>
+      <% allMembers.forEach((member) => { %>
         <div class="profile-pic">
             <a href="/members/<%= member._id %>">
-                <% if (!member.headshot) { %>
-                    <!-- Placeholder image logic -->
-                    <img 
-                      src="<%= member.gender === 'Male' ? 'https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716036/male_headshot_dwklnh.jpg' : 'https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716035/female_headshot_ntxmak.jpg' %>" 
-                      alt="<%= member.name %>" 
-                      style="border: 6px solid <%= member.belt %>;
+                <img 
+                    src="<%= member.headshot %>" 
+                    alt="<%= member.name %>" 
+                    style="border: 6px solid <%= member.belt %>;
                         <% if (member.belt.toLowerCase() === 'white') { %>
-                          outline: 2px solid rgba(0, 0, 0, 0.2);
+                            outline: 2px solid rgba(0, 0, 0, 0.2);
                         <% } else if (member.belt.toLowerCase() === 'blue') { %>
-                          border: 6px solid #2667ff;
+                            border: 6px solid #2667ff;
                         <% } else if (member.belt.toLowerCase() === 'purple') { %>
-                          border: 6px solid #5a2086;
+                            border: 6px solid #5a2086;
                         <% } else if (member.belt.toLowerCase() === 'brown') { %>
-                          border: 6px solid #774936;
+                            border: 6px solid #774936;
                         <% } %>
-                      ">
-                  <% } else if (member.headshot.trim().includes('image')) { %>
-                    <!-- "/images" prefix logic -->
-                    <img 
-                      src=<%= member.headshot %>
-                      alt="<%= member.name %>" 
-                      style="border: 6px solid <%= member.belt %>;
-                        <% if (member.belt.toLowerCase() === 'white') { %>
-                          outline: 2px solid rgba(0, 0, 0, 0.2);
-                        <% } else if (member.belt.toLowerCase() === 'blue') { %>
-                          border: 6px solid #2667ff;
-                        <% } else if (member.belt.toLowerCase() === 'purple') { %>
-                          border: 6px solid #5a2086;
-                        <% } else if (member.belt.toLowerCase() === 'brown') { %>
-                          border: 6px solid #774936;
-                        <% } %>
-                      ">
-                  <% } else { %>
-                    <!-- Base64 image logic -->
-                    <img 
-                      src="data:image/jpeg;base64,<%= member.headshot %>" 
-                      alt="<%= member.name %>" 
-                      style="border: 6px solid <%= member.belt %>;
-                        <% if (member.belt.toLowerCase() === 'white') { %>
-                          outline: 2px solid rgba(0, 0, 0, 0.2);
-                        <% } else if (member.belt.toLowerCase() === 'blue') { %>
-                          border: 6px solid #2667ff;
-                        <% } else if (member.belt.toLowerCase() === 'purple') { %>
-                          border: 6px solid #5a2086;
-                        <% } else if (member.belt.toLowerCase() === 'brown') { %>
-                          border: 6px solid #774936;
-                        <% } %>
-                      ">
-                  <% } %>                  
+                    ">
             </a>
-            <h3><%= member.name %></h3></a>
+            <h3><%= member.name %></h3>
             <h4><%= member.belt %> Belt</h4>
             <div class="social-icons">
                 <% if (member.instagram && member.instagram !== "") { %>
-                <a href="<%= member.instagram %>" target="_blank"><img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1737715786/instagram_akkmht.png" id="instagram"></a>
+                    <a href="<%= member.instagram %>" target="_blank">
+                        <img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1737715786/instagram_akkmht.png" id="instagram">
+                    </a>
                 <% } %>
                 <% if (member.facebook && member.facebook !== "") { %>
-                <a href="<%= member.facebook %>" target="_blank"><img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1737715805/facebook_urjig6.png" id="facebook"></a>
+                    <a href="<%= member.facebook %>" target="_blank">
+                        <img src="https://res.cloudinary.com/dvp3fdavw/image/upload/v1737715805/facebook_urjig6.png" id="facebook">
+                    </a>
                 <% } %>
             </div>
         </div>
-        <% }) %>
+    <% }) %>
+    
     </section>
 <%- include('../footer') %>
 <script>

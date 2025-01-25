@@ -23,7 +23,7 @@
                 <% }) %>
             </div>
         <% } %>
-        <form action="/members/<%=member._id%>?_method=PUT" method="POST">
+        <form action="/members/<%=member._id%>?_method=PUT" method="POST" enctype="multipart/form-data">
             <!-- Name Input -->
             <div class="mb-3 d-flex align-items-center">
                 <label for="name" class="me-2 form-label form-label-profile" style="margin-bottom: 0;">User Name</label>
@@ -65,8 +65,8 @@
                 <input type="text" name="facebook" class="form-control wider-input" id="facebook" style="flex: 1;" value="<%=member.facebook%>"/>
             </div>
             <div class="mb-3 d-flex align-items-center">
-                <label for="profileImage" class="me-2 form-label form-label-profile" style="margin-bottom: 0;">Profile Image</label>
-                <input type="file" name="profileImage" class="form-control wider-input" id="profileImage" accept="image/*" />
+                <label for="image" class="me-2 form-label form-label-profile" style="margin-bottom: 0;">Profile Image</label>
+                <input type="file" name="image" class="form-control wider-input" id="image" accept="image/*" />
             </div>
             <button type="submit" class="btn btn-danger">Update Profile</button>
         </form>

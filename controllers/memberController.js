@@ -27,10 +27,18 @@ router.route('/').get(async function (req, res, next) {
 
 router.post('/members', upload.single("image"), async function (req, res, next) {
     try {
-
         if (!req.session.user) {
-            req.flash("error",  "You must be logged in to post a profile")
+            req.flash("error",  "You must be logged in to post a profile.")
             return res.redirect(`/login`)
+        }
+
+        const enteredEmail = req.body.email.trim().toLowerCase()
+        const existingEmail = await Member.findOne({email: enteredEmail})
+
+        if (existingEmail) {
+            req.flash("error",  "The email you have entered is already registered with another account.")
+            console.log("Flash set:", req.flash('error'));
+            return res.redirect('/members/new');
         }
 
         // ! Add the user to the req.body, from the cookie
@@ -39,9 +47,15 @@ router.post('/members', upload.single("image"), async function (req, res, next) 
         // Check if an image was uploaded
         if (req.file) {
             req.body.headshot = req.file.buffer.toString("base64");
-        } else {
-            req.body.headshot = ""; // Set headshot to an empty string or a default value if no image is uploaded
+            req.body.headshot = `data:image/jpeg;base64, ${req.body.headshot}`
         }
+
+        if (!req.body.headshot && req.body.gender === 'Male') {
+            req.body.headshot = "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716036/male_headshot_dwklnh.jpg"
+        } else if (!req.body.headshot && req.body.gender === 'Female') {
+            req.body.headshot = "https://res.cloudinary.com/dvp3fdavw/image/upload/v1737716035/female_headshot_ntxmak.jpg"
+        }
+
         // Get the new member from the body of request
         const newMember = await Member.create(req.body)
 
@@ -83,7 +97,12 @@ router.route('/members').get(async function (req, res, next) {
 // GET /member/new
 router.route('/members/new').get(async function (req, res) {
     try {
-        res.render('members/new', { errorMessages: [], member: {} });
+        const user = req.session.user
+        console.log(req.session)
+        const errorMessages = req.flash('error'); // Fetch any error messages
+        const member = {}; // Pass an empty object to ensure no errors in the view
+        console.log('Flash Messages:', errorMessages);
+        res.render('members/new', { errorMessages, member });
     } catch (e) {
         next(e)
     }
@@ -117,8 +136,9 @@ router.route('/members/belt/:belt').get(async function (req, res, next) {
 router.route('/members/:id').delete(async function (req, res, next) {
     try {
         const memberId = req.params.id
-
         const member = await Member.findById(memberId).populate('user')
+        const userRole = req.session.user.role;
+        const userEmail = req.session.user.email;
 
         if (!req.session.user) {
             req.flash("error", "You must be logged in to delete a profile.");
@@ -129,9 +149,9 @@ router.route('/members/:id').delete(async function (req, res, next) {
             return res.send({ message: "Profile doesn't exist." })
         }
 
-        if (!member.user._id.equals(req.session.user._id)) {
-            req.flash("error",  "This is not your profile to delete")
-            return res.redirect(`/members/${member._id}`)
+        if (userRole !== "Admin" && member.email !== userEmail) {
+            req.flash("error", "You must be an Admin User or the owner of the profile to delete it.");
+            return res.redirect(`/members/update/${member._id}`);
         }
 
         await Member.findByIdAndDelete(memberId)
@@ -154,7 +174,7 @@ router.route('/members/update/:id').get(async function(req, res, next) {
     }
   })
 
-  router.route('/members/:id').put(async function (req, res, next) {
+router.put('/members/:id', upload.single("image"), async function (req, res, next) {
     try {
         // Check if the user is logged in
         if (!req.session.user) {
@@ -178,6 +198,12 @@ router.route('/members/update/:id').get(async function(req, res, next) {
             return res.redirect(`/members/update/${member._id}`);
         }
 
+        // Check if an image was uploaded
+        if (req.file) {
+            req.body.headshot = req.file.buffer.toString("base64");
+            req.body.headshot = `data:image/jpeg;base64, ${req.body.headshot}`
+        }
+
         // Update the member while ensuring validations are run
         const memberId = req.params.id;
         const updatedMember = await Member.findByIdAndUpdate(memberId, req.body, {
@@ -198,6 +224,5 @@ router.route('/members/update/:id').get(async function(req, res, next) {
         }
     }
 });
-
 
 export default router
