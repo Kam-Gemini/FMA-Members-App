@@ -325,3 +325,93 @@ button.btn.btn-danger {
 .profile-actions button {
     white-space: nowrap; /* Prevent text wrapping in buttons */
 }
+
+/*user pages styles*/
+
+.login {
+    background-color: black !important;
+    color: white !important;
+    min-height: 100vh;
+}
+
+.register {
+    background-color: white !important;
+    color: black !important;
+}
+
+.log-in-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#user-logo {
+    width: 300px;
+    height: 300px;
+    margin: 50px 0;
+    border-radius: 50%;
+    outline: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+#register-logo {
+    width: 370px;
+    height: 370px;
+    margin: 30px 0;
+}
+
+.form-label {
+    white-space: nowrap; /* Prevents text wrapping */
+    width: 70px; /* Fixed width */
+}
+
+button {
+    width: 100%; /* Full-width button */
+}
+
+/* Adjust the width of labels on the signup page */
+.form-label-custom {
+    width: 130px; /* Adjust width as needed */
+    display: inline-block; /* Ensures labels are inline but behave like block-level elements */
+}
+
+.form-label-profile {
+    width: 95px; /* Adjust width as needed */
+    display: inline-block; /* Ensures labels are inline but behave like block-level elements */
+}
+
+/* new profile */
+
+.new-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#profile-logo {
+    width: 300px;
+    height: 300px;
+    margin: 20px 0;
+}
+
+.wider-input {
+    width: 280px !important; /* or set a specific width like 80% */
+}
+
+.update-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black !important;
+    color: white !important;
+}
+
+#update-profile-logo {
+    width: 300px;
+    height: 300px;
+    margin: 20px 0 30px 0;
+    border-radius: 50%;
+    outline: 2px solid rgba(0, 0, 0, 0.5);
+}
