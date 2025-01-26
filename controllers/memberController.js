@@ -37,7 +37,6 @@ router.post('/members', upload.single("image"), async function (req, res, next) 
 
         if (existingEmail) {
             req.flash("error",  "The email you have entered is already registered with another account.")
-            console.log("Flash set:", req.flash('error'));
             return res.redirect('/members/new');
         }
 
