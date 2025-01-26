@@ -43,7 +43,12 @@ app.use(session({
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 24, // 1 day
     },
-}));
+    // 🚨 Make sure you have this below segment to store sessions in MongoDB
+    store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI,
+    collectionName: 'sessions',
+    }),
+}))
 
 app.use(express.json())
 
