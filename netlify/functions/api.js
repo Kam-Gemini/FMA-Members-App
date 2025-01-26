@@ -27,13 +27,7 @@ dotenv.config() // initalises .env
 // 🚨 Grab the Mongo URL variable from your .env file:
 mongoose.connect(process.env.MONGODB_URI)
 
-mongoose.connection.on('error', err => { console.error('MongoDB connection error:', err); }); 
-mongoose.connection.on('connected', () => { console.log('MongoDB connected successfully'); });
-
 const app = express()
-
-// Set EJS as the template engine
-app.set("view engine", "ejs");
 
 // * Add sessions to express
 app.use(session({
@@ -51,6 +45,18 @@ app.use(session({
     },
 }));
 
+app.use(express.json())
+
+// Serve static files
+app.use(express.static("public")); // ! You need this line for stylesheets/JS
+
+// Set EJS as the template engine
+app.set("view engine", "ejs");
+
+// * This will expect the form data from your form, and add to req.body 
+app.use(express.urlencoded({ extended: false }))
+app.use(methodOverride('_method'))
+
 app.use(flash())
 
 // Make flash messages available to all views
@@ -59,12 +65,6 @@ app.use((req, res, next) => {
     res.locals.errorMessages = req.flash('error');
     next();
 });
-
-app.use(express.json())
-
-// * This will expect the form data from your form, and add to req.body 
-app.use(express.urlencoded({ extended: false }))
-app.use(methodOverride('_method'))
 
 app.use(function (req, res, next) {
     res.locals.user = req.session.user || null
