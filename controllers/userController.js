@@ -116,7 +116,6 @@ router.get('/login', (req, res, next) => {
   })
 
   router.post('/logout', (req, res) => {
-    console.log(req.session.user)
     req.session.destroy()
     res.redirect('members')
   })
