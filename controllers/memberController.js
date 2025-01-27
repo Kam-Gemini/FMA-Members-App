@@ -97,10 +97,8 @@ router.route('/members').get(async function (req, res, next) {
 router.route('/members/new').get(async function (req, res) {
     try {
         const user = req.session.user
-        console.log(req.session)
         const errorMessages = req.flash('error'); // Fetch any error messages
         const member = {}; // Pass an empty object to ensure no errors in the view
-        console.log('Flash Messages:', errorMessages);
         res.render('members/new', { errorMessages, member });
     } catch (e) {
         next(e)
