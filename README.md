@@ -5,18 +5,6 @@ For the second module of the course we were tasked with building a database app 
 
 I decided to build an app related to my jiu-jitsu club. The app stores and displays the profiles of members and enables a user to add/update/delete a profile. 
 
-**User Story:**
-
-* As a visitor on the landing page I should see a nav bar.  
-* As a visitor I can return to the landing page by clicking on the Home button.  
-* As a visitor I can view all the members of the club from the nav bar.  
-* As a visitor I should be able to filter the members according to their belt category.  
-* As a visitor I can register my own membership by completing the Registration form.  
-* As a User I can create my own profile.  
-* As a User I can log in to my account.  
-* As a User I can only update/delete my own profile.  
-* As an Admin User I can add/update/delete any profile.
-
 **Deployment link**  
 https://fma-members.netlify.app/
 
@@ -37,13 +25,25 @@ Build an App using express/node enabling CRUD and data management.
 
 * Node.js  
 * Express.js  
-* CSS  
 * MongoDB Compass  
 * Postman
 
 
 **Planning**  
+https://trello.com/b/WWhKGKHI/jiu-jitsu-app  
 ![][image1]
+
+**User Story:**
+
+* As a visitor on the landing page I should see a nav bar.  
+* As a visitor I can return to the landing page by clicking on the Home button.  
+* As a visitor I can view all the members of the club from the nav bar.  
+* As a visitor I should be able to filter the members according to their belt category.  
+* As a visitor I can register my own membership by completing the Registration form.  
+* As a User I can create my own profile.  
+* As a User I can log in to my account.  
+* As a User I can only update/delete my own profile.  
+* As an Admin User I can add/update/delete any profile.
 
 **Build/Code Process**
 
