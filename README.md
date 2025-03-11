@@ -1,17 +1,21 @@
 # ReadMe
 
-**Description**  
+## **Description**
+
 For the second module of the course we were tasked with building a database app designed to handle, manipulate, and securely store data while enabling seamless CRUD (Create, Read, Update, Delete) functionality for efficient data management.
 
 I decided to build an app related to my jiu-jitsu club. The app stores and displays the profiles of members and enables a user to add/update/delete a profile. 
 
-**Deployment link**  
+## **Deployment Link**
+
 https://fma-members.netlify.app/
 
-**Timeframe & Working Team (Solo/Pair/Group)**  
+## **Timeframe & Working Team (Solo/Pair/Team)**
+
 We were given one week to complete this project, working independently.
 
-**Brief**  
+## **Brief**
+
 Build an App using express/node enabling CRUD and data management.
 
 * The app utilizes EJS Templates for rendering views to users.  
@@ -21,19 +25,26 @@ Build an App using express/node enabling CRUD and data management.
 * Authorization is implemented in the app. Guest users (those not signed in) should not be able to create, update, or delete data in the application or access functionality allowing those actions.  
 * The app is deployed online so that the rest of the world can use it.
 
-**Technologies**
+## **Technologies**
 
 * Node.js  
 * Express.js  
 * MongoDB Compass  
 * Postman
 
+## **Attribution**
 
-**Planning**  
-https://trello.com/b/WWhKGKHI/jiu-jitsu-app  
+[https://www.flaticon.com/free-icons/home-button](https://www.flaticon.com/free-icons/home-button)
+
+## **Planning**
+
+Having decided to build a jiu-jitsu app based on member profiles at my club I went about planning the full scope of the app. I set-up a trello board to help plan and deliver the project. Initially I did some whiteboarding, trying to determine the overall look and feel of the app. By the end of this process I had established the layout, the different models and the user story.
+
+[https://trello.com/b/WWhKGKHI/jiu-jitsu-app](https://trello.com/b/WWhKGKHI/jiu-jitsu-app)
+
 ![][image1]
 
-**User Story:**
+## **User Story**
 
 * As a visitor on the landing page I should see a nav bar.  
 * As a visitor I can return to the landing page by clicking on the Home button.  
@@ -45,7 +56,7 @@ https://trello.com/b/WWhKGKHI/jiu-jitsu-app
 * As a User I can only update/delete my own profile.  
 * As an Admin User I can add/update/delete any profile.
 
-**Build/Code Process**
+## **Build/Code Process**
 
 * Install dependencies.  
 * Built schema models.  
@@ -61,10 +72,11 @@ https://trello.com/b/WWhKGKHI/jiu-jitsu-app
 * Created view for user login and creating new account.  
 * Completed nav bar and added styling to the website.
 
-**Challenges**  
+## **Challenges**
+
 The main challenge in this project were the many new concepts introduced, such as making asynchronous calls to the database, middleware for error handling and the general nature of the back-end interacting with the front-end. Understanding and implementing user authentication using bcrypt and checking the user session.
 
-**Wins**
+## **Wins**
 
 * Planning models helped map out the build approach and the relationship between the two models.  
 * Really happy with the overall look and feel of the app.  
@@ -74,17 +86,20 @@ The main challenge in this project were the many new concepts introduced, such a
 * Handling validation errors in a clean manner.  
 * Sign out button.
 
-**Key Learnings/Takeaways**  
+## **Key Learnings/Takeaways**
+
 I have a much better understanding of all the technologies used and the general concept of a client/browser interacting with the server. 
 
 I already had some experience using Postman in previous roles, but this project helped cement my understanding of what Postman is and how it is an essential tool for database projects.
 
 I also better understand the absolute necessity to be able to debug and understand error messages.
 
-**Bugs**  
+## **Bugs**
+
 The belt section is hidden when selecting a belt to filter the profiles by. You have to click the belt icon again to filter again.
 
-**Future Improvements**  
+## **Future Improvements**
+
 I could enhance the user experience by implementing the following features:
 
 * Admin Users can assign roles to other users.  
