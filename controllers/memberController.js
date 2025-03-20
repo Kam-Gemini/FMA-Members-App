@@ -19,9 +19,14 @@ const upload = multer({
 
 router.route('/').get(async function (req, res, next) {
     try {
-        res.render('home.ejs')
+        const user = req.session.user
+        const allMembers = await Member.find()
+        res.render('members/index.ejs', {
+            allMembers: allMembers,
+            isLoggedIn: !!user // Pass a flag for whether the user is logged in
+        })
     } catch (e) {
-        next (e)
+        next(e)
     }
 })
 

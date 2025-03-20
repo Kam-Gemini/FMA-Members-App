@@ -118,7 +118,11 @@ For the members index I wrote code that sets a border to the belt colour of the 
 
 ## 🎬 FMA App Demo
 
+![FMA Demo](public/images/FMA-Demo.gif)
+
 ## 🎬 Updating Profile
+
+![Updating Profile](public/images/FMA-Updating-Profile.gif)
 
 ## **Challenges**
 
@@ -129,7 +133,7 @@ The main challenge in this project were the many new concepts introduced, such a
 * Planning models helped map out the build approach and define relationships between components.  
 * Delivered an app with a polished and intuitive look and feel.  
 * Utilising Bootstrap for responsive and user-friendly forms.
-* Belt filtering and dynamically updating the profile border when Belt field is updated.
+* Belt filtering and dynamically updating the profile border when belt field is updated.
 * Permission and user accessibility based on user role \- an admin user can add/update/delete any profile whereas an End User can only edit/delete their own profile.  
 * Integrated image upload functionality with placeholder images for profiles without uploads. 
 * Cleanly handled validation errors to enhance user experience.
