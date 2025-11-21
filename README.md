@@ -120,6 +120,8 @@ For the members index I wrote code that sets a border to the belt colour of the 
 
 ![FMA Demo](public/images/FMA-Demo.gif)
 
+Members need to be logged in to update their profile and can only update their own profile. Admin users however have full access and can update any profile.
+
 ## 🎬 Updating Profile
 
 ![Updating Profile](public/images/FMA-Updating-Profile.gif)
