@@ -75,7 +75,7 @@ router.get('/login', (req, res, next) => {
   
       // If we succeed, we do this later:
       req.session.user = user
-      res.redirect('/members')
+      res.redirect('/')
   
     } catch(e) {
       // If any other error occurs, send the error to the next middleware
@@ -93,7 +93,7 @@ router.get('/login', (req, res, next) => {
 
   router.post('/logout', (req, res) => {
     req.session.destroy()
-    res.redirect('members')
+    res.redirect('/')
   })
 
 export default router
