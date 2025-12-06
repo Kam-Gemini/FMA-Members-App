@@ -8,7 +8,7 @@ I decided to build an app related to my jiu-jitsu club. The app stores and displ
 
 ## **Deployment Link**
 
-https://fma-members.netlify.app/
+<a href="https://fma-members.netlify.app/" target="_blank">FMA Members App</a>
 
 ## **Timeframe & Working Team (Solo/Pair/Team)**
 
@@ -40,7 +40,7 @@ Build an App using express/node enabling CRUD and data management.
 
 Having decided to build a jiu-jitsu app based on member profiles at my club I went about planning the full scope of the app. I set-up a trello board to help plan and deliver the project. Initially I did some whiteboarding, trying to determine the overall look and feel of the app. By the end of this process I had established the layout, the different models and the user story.
 
-[Trello Board](https://trello.com/b/WWhKGKHI/jiu-jitsu-app)
+<a href="https://trello.com/b/WWhKGKHI/jiu-jitsu-app" target="_blank">Trello Board</a>
 
 <img src="public/images/FMA_Wireframe.png" alt="Wireframe"/>
 
